@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "van-calendar": "@vant/weapp/calendar/index",
+        "van-uploader": "@vant/weapp/uploader/index"
+    },
+    "navigationBarTitleText": "车辆信息"
+}

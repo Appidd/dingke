@@ -1,16 +1,48 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/login/login",
-    "pages/getOpenId/index"
-  ],
-  "window": {
-    "backgroundColor": "#fff",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "云开发 QuickStart",
-    "navigationBarTextStyle": "black"
-  },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+    "pages": [
+        "pages/login/login",
+        "pages/index/index",
+       
+        "pages/test/test",
+
+        "pages/userTask/userTask",
+        "pages/userSum/userSum",
+        "pages/userMine/userMine",
+        "pages/manAdd/manAdd",
+        "pages/manLook/manLook",
+
+        "pages/carInfo/carInfo",
+        "pages/taskReport/taskReport"
+    ],
+
+    "tabBar": {
+        "custom": true,
+        "selectedColor": "#015CAD",
+        "color": "#C7C7C7",
+        "list": [{
+                "pagePath": "pages/userTask/userTask"
+            },
+            {
+                "pagePath": "pages/userSum/userSum"
+            },
+            {
+                "pagePath": "pages/userMine/userMine"
+            },
+            {
+                "pagePath": "pages/manAdd/manAdd"
+            },
+            {
+                "pagePath": "pages/manLook/manLook"
+            }
+        ]
+    },
+    "window": {
+        "backgroundColor": "#fff",
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "上海定科",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json"
+   
 }

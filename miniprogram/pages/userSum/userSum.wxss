@@ -1,0 +1,44 @@
+/* pages/userSum/userSum.wxss */
+page{
+    background-color: #F5F5F5;
+}
+
+.filter_box{
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    background-color: #fff;
+}
+.filter_box input{
+width: 240rpx;
+height: 64rpx;
+background-color: #F4F4F4;
+text-align: center;
+}
+.calendar_icon{
+    width: 48rpx;
+    height: 48rpx;
+}
+.scroll_container{
+    flex-grow: 1;
+    width: 100%;
+    /* background-color: red; */
+    position: relative;
+}
+.scroll_box{
+    width: 750rpx;
+    position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   padding-bottom: env(safe-area-inset-bottom);
+}
+
+.calendar {
+    --calendar-height: 618px;
+  }

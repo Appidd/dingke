@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+      "navigation":"../../components/navigation/navigation",
+      "weekCalendar":"../../components/weekCalendar/weekCalendar",
+      "taskItem":"../../components/taskItem/taskItem"
+    },
+    "navigationStyle": "custom"
+}

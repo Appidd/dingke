@@ -1,0 +1,19 @@
+/* components/topNavigator/topNavigator.wxss */
+.navigation{
+    box-sizing: border-box;
+    background-color: #fff;
+}
+.menu_button_box{
+    width: 750rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 0rpx 48rpx;
+    box-sizing: border-box;
+}
+.logo_icon{
+    width: 50rpx;
+    height: 30rpx;
+    margin-right: 24rpx;
+}

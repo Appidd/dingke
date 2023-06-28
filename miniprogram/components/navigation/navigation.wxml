@@ -1,0 +1,9 @@
+<view style="height:{{navHeight}}px;padding-top: {{top}}px;background-color: {{backgroundColor}};" class="navigation" bindtap="toTop">
+    <view class="menu_button_box" style="height: {{searchHeight}}px;">
+        
+            <image src="../../images/icon/logo.png" mode="aspectFill" class="logo_icon"/>
+            <view>
+                {{userName}}{{isManage?'（管理）':''}}
+            </view>
+    </view>
+</view>

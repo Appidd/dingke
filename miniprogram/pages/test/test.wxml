@@ -1,0 +1,1 @@
+<van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm"  type="range" show-confirm="{{ true }}" color="#015CAD"/>

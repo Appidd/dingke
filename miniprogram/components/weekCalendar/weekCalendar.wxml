@@ -1,0 +1,16 @@
+<view class="week_container">
+  <view class="week_list">
+     <view wx:for="{{weekList}}">
+       <view class="week_item gray_color">
+        {{item}}
+       </view>
+     </view>
+  </view>
+  <view class="week_list" style="margin-top: 20rpx;">
+     <view wx:for="{{newDateList}}">
+      <view class="week_item {{item.checked?'checked':'nocheck'}}" bindtap="chooseDate" data-item="{{item}}">
+        {{item.day}}
+      </view>
+     </view>
+  </view>
+</view>

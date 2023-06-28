@@ -1,0 +1,4 @@
+/* pages/test/test.wxss */
+.van-calendar__footer{
+    margin-bottom: 100rpx;
+}

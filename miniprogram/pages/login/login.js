@@ -14,7 +14,11 @@ Page({
     onLoad(options) {
 
     },
-
+    toUserTask(){
+        wx.switchTab({
+          url: '../userTask/userTask',
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

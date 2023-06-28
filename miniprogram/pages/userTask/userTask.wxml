@@ -1,0 +1,10 @@
+<view class="container">
+    <navigation userName="李四" isManage="{{true}}"></navigation>
+    <weekCalendar></weekCalendar>
+    <view class="scroll_container">
+        <scroll-view scroll-y class="scroll_box">
+           <taskItem wx:for="{{taskList}}" taskItem="{{item}}" taskIndex="{{index+1}}" type="{{0}}"></taskItem>
+            <view class="tabberHeight"></view>
+        </scroll-view>
+    </view>
+</view>

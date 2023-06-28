@@ -1,0 +1,48 @@
+<view class="container">
+    <navigation userName="李四" isManage="{{true}}"></navigation>
+    <view class="title fullwidth">
+        车型、车牌号
+    </view>
+    <view class="fullwidth">
+        <input type="text" placeholder="请输入车牌号" class=" input_box" value="本田(沪A25V51)" />
+    </view>
+
+    <view class="title fullwidth">
+        所属人
+    </view>
+    <view class="fullwidth">
+        <input type="text" placeholder="请输入所属人" class=" input_box" value="王刚" />
+    </view>
+    <view class="title fullwidth">
+        保险有效日期
+    </view>
+    <view class="fullwidth">
+        <view class="date_box" bindtap="showCalendar">
+            <input type="text" placeholder="请选择开始日期" disabled value="{{startDate}}" />
+            <view>
+                -
+            </view>
+            <input type="text" placeholder="请选择结束日期" disabled value="{{endDate}}" />
+
+        </view>
+    </view>
+    <view class="title fullwidth">
+        行驶证
+    </view>
+    <view class="fullwidth">
+        <van-uploader file-list="{{ fileList }}" />
+    </view>
+
+    <view class="title fullwidth">
+        保险单
+    </view>
+    <view class="fullwidth">
+        <van-uploader file-list="{{ fileList }}" />
+    </view>
+    <view class="fullwidth">
+        <view class=" saveBtn ">
+            确认
+        </view>
+    </view>
+
+</view>

@@ -1,0 +1,104 @@
+<view class="container">
+    <navigation userName="李四" isManage="{{true}}"></navigation>
+    <view class="scroll_container">
+        <scroll-view scroll-y class="scroll_box">
+        <view class="userInfo page_container">
+        <image src="../../images/icon/avatar.png" mode="aspectFill" class="avatar" />
+        <view class="name_phone">
+            <view class="name">
+                李四
+            </view>
+            <view class="phone">
+                17323011656
+            </view>
+        </view>
+        <view class="edit_btn">
+            <view>
+                编辑信息
+            </view>
+        </view>
+    </view>
+
+    <view class="page_container">
+        <view class="flex_begin">
+            <image src="../../images/icon/idcard.png" mode="aspectFill" class="idcard" />
+            <view style="margin-left: 32rpx;">
+                人资信息
+            </view>
+        </view>
+        <van-cell-group>
+            <van-cell title="身份证号：" value="5101831996040165039" border="{{ false }}" />
+            <van-cell title="家庭住址：" value="上海市黄浦区尚文路133号房间" border="{{ false }}" />
+            <van-cell title="紧急联系人：" value="杨过益（17323014526）" border="{{ false }}" />
+        </van-cell-group>
+        <van-collapse accordion value="{{ pactiveName }}" bind:change="ponChange" border="{{false}}">
+            <van-collapse-item title="身份证复印件" name="1" border="{{false}}">
+                <view class="idcard_box">
+                    <view class="idcard_img">
+                    身份证国徽
+                </view>
+                <view class="idcard_img">
+                    身份证人像
+                </view>
+                </view>
+            </van-collapse-item>
+            <van-collapse-item title="特种证件" name="2" border="{{false}}">
+                <view class="idcard_box">
+                    <view class="idcard_img">
+                    特种1
+                </view>
+                <view class="idcard_img">
+                    特种2
+                </view>
+                </view>
+            </van-collapse-item>
+
+        </van-collapse>
+
+
+
+
+    </view>
+
+    <view class="page_container">
+        <view class="flex_begin" bindtap="toCarInfo">
+            <image src="../../images/icon/car.png" mode="aspectFill" class="idcard" />
+            <view style="margin-left: 32rpx;">
+                车辆信息
+            </view>
+            <image src="../../images/icon/edit.png" mode="aspectFill" class="edit" />
+        </view>
+        <van-cell-group>
+            <van-cell title="车型、车牌号：" value="本田(沪A25V51)" border="{{ false }}" />
+            <van-cell title="所属人：" value="王刚" border="{{ false }}" />
+          
+        </van-cell-group>
+        <van-collapse accordion value="{{ cactiveName }}" bind:change="conChange" border="{{false}}">
+            <van-collapse-item title="行驶证" name="1" border="{{false}}">
+                <view class="idcard_box">
+                    <view class="idcard_img">
+                        行驶证
+                </view>
+                
+                </view>
+            </van-collapse-item>
+            <van-collapse-item title="保险单" name="2" border="{{false}}">
+                <view class="idcard_box">
+                    <view class="idcard_img">
+                        保险单
+                </view>
+                
+                </view>
+            </van-collapse-item>
+
+        </van-collapse>
+
+
+
+
+    </view>
+    <view class="tabberHeight"></view>
+    </scroll-view>
+    </view>
+   
+</view>

@@ -1,0 +1,14 @@
+<!--custom-tab-bar/index.wxml-->
+<view class="tab-bar">
+  <view class="tab-bar-border"></view>
+  <view wx:for="{{selectList}}" wx:key="index" class="tab-bar-item" data-path="{{item.pagePath}}" data-selected="{{item.selected}}" bindtap="switchTab">
+   <block wx:if="{{item.onlyImg}}">
+    <image class="only-image" src="{{item.iconPath}}"></image>
+   </block>
+   <block wx:else>
+    <image class="cover-image" src="{{selected === item.selected ? item.selectedIconPath : item.iconPath}}"></image>
+    <view class="cover-view" style="color: {{selected === item.selected ? '#015CAD' : '#C7C7C7'}}">{{item.text}}</view>
+   </block>
+   
+  </view>
+</view>

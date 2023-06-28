@@ -1,0 +1,61 @@
+<view class="task_item_box">
+<view class="task_num_top">
+   <view class="task_num_top_left">
+       <image src="../../images/icon/task_icon.png" mode="aspectFill"/>
+       <view class="main_color">
+           工作任务{{taskIndex}}
+       </view>
+   </view>
+   <view class="task_num_top_right">
+        <view class="{{taskItem.status==0?'gray_color':'green_color'}}" wx:if="{{type==0}}">
+           {{taskItem.status==0?'待处理':'已完成'}}
+       </view>
+       <view class="{{taskItem.status==0?'gray_color':'green_color'}}" wx:if="{{type==1}}">
+           {{taskItem.status==0?'待汇报':'已汇报'}}
+       </view>
+       <image src="{{taskItem.status==0?'../../images/icon/arrow_gray.png':'../../images/icon/arrow_green.png'}}" mode="aspectFill" class="arrow"/>
+    </view>
+</view>
+    <view class="task_num_bottom">
+        <view style="width: 48rpx;" class="lcr fullHeigth">
+        
+        </view>
+        <view class="content lcr"  >
+            <view class="list_item">
+                <view class="task_list_name">
+                    项目编号：
+                </view>
+                <view>
+                    {{taskItem.serialNumber}}（2023）
+                </view>
+            </view>
+            <view class="list_item">
+                <view class="task_list_name">
+                    项目名称：
+                </view>
+                <view class="task_list_re">
+                    {{taskItem.taskName}}
+                </view>
+            </view>
+            <view class="list_item">
+                <view class="task_list_name">
+                    负责人：
+                </view>
+                <view class="main_color task_list_re">
+                    {{taskItem.principal}}
+                </view>
+            </view>
+            <view class="list_item">
+                <view class="task_list_name">
+                    协同人：
+                </view>
+                <view class="main_color task_list_re">
+                    {{taskItem.principals}}
+                </view>
+            </view>
+        </view>
+        <view style="width: 48rpx;"  class="lcr fullHeigth"> 
+            <image src="../../images/icon/done_icon.png" mode="aspectFill" class="done_img" wx:if="{{taskItem.status==1}}"/>
+        </view>
+    </view>
+</view>

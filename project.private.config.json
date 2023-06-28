@@ -11,6 +11,41 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "login",
+                    "pathName": "pages/login/login",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "userTask",
+                    "pathName": "pages/userTask/userTask",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/test/test",
+                    "pathName": "pages/test/test",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "pages/carInfo/carInfo",
+                    "pathName": "pages/carInfo/carInfo",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "taskReport",
+                    "pathName": "pages/taskReport/taskReport",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
