@@ -1,9 +1,42 @@
 /* pages/carInfo/carInfo.wxss */
+.container{
+    box-sizing: border-box;
+    width: 750rpx;
+}
 .fullwidth{
     width: 100%;
     padding: 20rpx 32rpx 0rpx 32rpx;
     box-sizing: border-box;
-   
+  
+}
+.double_list{
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    width: 100%;
+}
+.flex_between{
+justify-content: space-between;
+}
+.left_input_1{
+    width: 220rpx;
+height: 64rpx;
+background: #F4F4F4;
+border-radius: 8rpx 8rpx 8rpx 8rpx;
+opacity: 1;
+margin-left: 24rpx;
+text-align: center;
+color: #979797;
+}
+.left_input_3{
+    width: 192rpx;
+    height: 64rpx;
+    background: #F4F4F4;
+    border-radius: 8rpx 8rpx 8rpx 8rpx;
+    opacity: 1;
+  
+    text-align: center;
+    color: #979797;
 }
 .title{
     color: #000E1A;
@@ -19,6 +52,7 @@ line-height: 64rpx;
 color:#979797;
 font-size: 24rpx;
 padding: 0rpx 32rpx;
+box-sizing: border-box;
 }
 .date_box{
     display: flex;
@@ -46,6 +80,13 @@ color:#979797;
     opacity: 1;
     font-weight: bold;
     font-size: 28rpx;
-    position: fixed;
-    bottom: 50rpx;
+    margin-bottom: 48rpx;
+}
+.remark{
+    width: 654rpx;
+height: 176rpx;
+background: #F4F4F4;
+border-radius: 8rpx 8rpx 8rpx 8rpx;
+opacity: 1;
+padding: 20rpx;
 }

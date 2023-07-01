@@ -19,6 +19,7 @@ line-height: 64rpx;
 color:#979797;
 font-size: 24rpx;
 padding: 0rpx 32rpx;
+box-sizing: border-box;
 }
 .date_box{
     display: flex;

@@ -1,0 +1,8 @@
+<view class="container">
+    <van-cell-group>
+        <van-cell title="身份证号：" value="5101831996040165039" border="{{ false }}" />
+        <van-cell title="家庭住址：" value="上海市黄浦区尚文路133号房间" border="{{ false }}" />
+        <van-cell title="紧急联系人：" value="杨过益（17323014526）" border="{{ false }}" />
+    </van-cell-group>
+
+</view>

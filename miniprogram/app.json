@@ -6,6 +6,7 @@
         "pages/test/test",
 
         "pages/userTask/userTask",
+        "pages/taskDetail/taskDetail",
         "pages/userSum/userSum",
         "pages/userMine/userMine",
         "pages/manAdd/manAdd",
@@ -43,6 +44,9 @@
         "navigationBarTitleText": "上海定科",
         "navigationBarTextStyle": "black"
     },
-    "sitemapLocation": "sitemap.json"
+    "sitemapLocation": "sitemap.json",
+    "usingComponents": {
+        
+    }
    
 }
