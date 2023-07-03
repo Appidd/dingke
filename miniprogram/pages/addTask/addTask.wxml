@@ -1,0 +1,116 @@
+<navigation userName="李四" isManage="{{true}}"></navigation>
+<view class="title fullwidth">
+    项目名称
+</view>
+<view class="fullwidth">
+    <input type="text" placeholder="请输入项目名称" class=" input_box" value="上海定科工作管理" />
+</view>
+
+<view class="title fullwidth">
+    项目编号
+</view>
+<view class="fullwidth">
+    <input type="text" placeholder="请输入项目编号" class=" input_box" value="0256745（2023）" />
+</view>
+<view class="title fullwidth">
+    工作地点
+</view>
+<view class="fullwidth">
+    <input type="text" placeholder="请输入工作地点" class=" input_box" value="" />
+</view>
+
+<view class="title fullwidth">
+    联系人
+</view>
+<view class="fullwidth">
+    <input type="text" placeholder="请输入联系人信息" class=" input_box" value="" />
+</view>
+<view class="title fullwidth">
+    负责人
+</view>
+<view class="fullwidth">
+    <view class=" input_box" style="display: flex;justify-content: space-between;">
+        <view>
+            王琴
+        </view>
+        <van-icon name="arrow-down" />
+    </view>
+</view>
+<view class="title fullwidth">
+    协同人员（可多选）
+</view>
+
+<view class="fullwidth" bindtap="showSynergy">
+    <view class=" input_box" style="display: flex;justify-content: space-between;">
+        <view>
+            王琴、张世伟、王东升
+        </view>
+        <van-icon name="arrow-down" />
+    </view>
+</view>
+<view class="fullwidth" wx:if="{{show}}">
+    <view class="pList">
+        <view wx:for="{{synergyList}}" class="pitem {{item.checked?'checked':''}}">
+            {{item.name}}
+        </view>
+    </view>
+</view>
+<view class="title fullwidth">
+    到达地点
+</view>
+<view class="fullwidth">
+    <input type="text" placeholder="请输入具体地点信息" class=" input_box" value="" />
+</view>
+<view class="title fullwidth">
+    到达时间
+</view>
+<view class="fullwidth">
+    <view class=" input_box" style="display: flex;justify-content: space-between;">
+        <view>
+            请选择到达时间
+        </view>
+        <van-icon name="arrow-down" />
+    </view>
+</view>
+<view class="title fullwidth">
+    乘车方式
+</view>
+<view class="double_list fullwidth flex_between">
+    <view class="double_list" >
+        <view style="white-space: nowrap;">
+            司机
+        </view>
+        <view class=" input_box" style="display: flex;justify-content: space-between;width: 184rpx;margin-left: 24rpx;">
+            <view>
+                王琴
+            </view>
+            <van-icon name="arrow-down" />
+        </view>
+    </view>
+
+    <view class="double_list" >
+        <view style="white-space: nowrap;">
+            车辆
+        </view>
+        <view class=" input_box" style="display: flex;justify-content: space-between;width: 278rpx;margin-left: 24rpx;">
+            <view>
+                本田(沪A25V51)
+            </view>
+            <van-icon name="arrow-down" />
+        </view>
+    </view>
+
+</view>
+
+<view class="title fullwidth">
+    备注
+</view>
+<view class="double_list fullwidth flex_between">
+    <textarea value="" placeholder="请输入备注信息" class="remark"/>
+</view>
+
+<view class="fullwidth" bindtap="addTask">
+    <view class=" saveBtn " >
+        发布任务
+    </view>
+</view>

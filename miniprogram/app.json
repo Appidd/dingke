@@ -1,19 +1,21 @@
 {
     "pages": [
-        "pages/login/login",
-        "pages/index/index",
-       
-        "pages/test/test",
-
         "pages/userTask/userTask",
+        "pages/login/login",
         "pages/taskDetail/taskDetail",
         "pages/userSum/userSum",
         "pages/userMine/userMine",
+        "pages/userEdit/userEdit",
         "pages/manAdd/manAdd",
         "pages/manLook/manLook",
-
         "pages/carInfo/carInfo",
-        "pages/taskReport/taskReport"
+        "pages/taskReport/taskReport",
+        "pages/addTask/addTask",
+        "pages/mCar/mCar",
+        "pages/mCarInfo/mCarInfo",
+        "pages/mPeople/mPeople",
+        "pages/mPeopleInfo/mPeopleInfo",
+        "pages/statistic/statistic"
     ],
 
     "tabBar": {

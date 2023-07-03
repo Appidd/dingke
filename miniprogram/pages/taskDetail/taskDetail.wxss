@@ -1,1 +1,66 @@
 /* pages/taskDetail/taskDetail.wxss */
+
+page {
+    background-color: #fff;
+}
+
+.content_box {
+    height: 100vh;
+}
+
+.scroll_container {
+    width: 100%;
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    box-sizing: border-box;
+    flex-grow: 1;
+    position: relative;
+}
+.scroll_box{
+    width: 100%;
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    box-sizing: border-box;
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+}
+
+.van-cell,
+.van-collapse-item__content {
+    padding-left: 0rpx !important;
+    padding-right: 0rpx !important;
+}
+
+.van-cell__value {
+    color: #000E1A !important;
+    /* display: block !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important; */
+}
+
+.fullwidth {
+    width: 100%;
+    padding: 20rpx 32rpx 48rpx 32rpx;
+    box-sizing: border-box;
+
+}
+
+.btn {
+    border-radius: 16rpx 16rpx 16rpx 16rpx;
+    font-weight: bold;
+    font-size: 28rpx;
+    width: 686rpx;
+    box-sizing: border-box;
+    line-height: 96rpx;
+    text-align: center;
+    color: #fff;
+    height: 96rpx;
+    
+}
+
+.saveBtn {
+    
+    background: #015CAD;
+}
+

@@ -29,6 +29,16 @@ Component({
      * 组件的方法列表
      */
     methods: {
-
+        toDetail(){
+            if(getApp().isLogin()){
+                wx.navigateTo({
+                    url: '../../pages/taskDetail/taskDetail',
+                  })
+            }else{
+                wx.navigateTo({
+                  url: '../../pages/login/login',
+                })
+            }
+        },
     }
 })

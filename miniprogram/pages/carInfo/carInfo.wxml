@@ -4,25 +4,31 @@
         车型、车牌号
     </view>
     <view class="fullwidth">
-        <input type="text" placeholder="请输入车牌号" class=" input_box" value="本田(沪A25V51)" />
+        <input type="text" placeholder="请输入车型、车牌号" class=" input_box" model:value="{{carTypeNum}}"/>
     </view>
 
     <view class="title fullwidth">
         所属人
     </view>
     <view class="fullwidth">
-        <input type="text" placeholder="请输入所属人" class=" input_box" value="王刚" />
+        <input type="text" placeholder="请输入所属人" class=" input_box" model:value="{{belongs}}" />
     </view>
     <view class="title fullwidth">
         保险有效日期
     </view>
     <view class="fullwidth">
         <view class="date_box" bindtap="showCalendar">
-            <input type="text" placeholder="请选择开始日期" disabled value="{{startDate}}" />
+            <picker mode="date" bindchange="getstartDate">
+                <input type="text" placeholder="请选择开始日期" disabled value="{{startDate}}" />
+            </picker>
+            
             <view>
                 -
             </view>
-            <input type="text" placeholder="请选择结束日期" disabled value="{{endDate}}" />
+            <picker mode="date" bindchange="getendDate">
+                <input type="text" placeholder="请选择结束日期" disabled value="{{endDate}}" />
+            </picker>
+           
 
         </view>
     </view>
@@ -30,19 +36,20 @@
         行驶证
     </view>
     <view class="fullwidth">
-        <van-uploader file-list="{{ fileList }}" />
+        <van-uploader file-list="{{ drivingLicenceList }}" bind:after-read="afterReadLicence" deletable="{{ true }}" bind:delete="deleteDriver" />
     </view>
 
     <view class="title fullwidth">
         保险单
     </view>
     <view class="fullwidth">
-        <van-uploader file-list="{{ fileList }}" />
+        <van-uploader file-list="{{ insuranceList }}" bind:after-read="afterReadinsurance" deletable="{{ true }}" bind:delete="deleteInsurance" />
     </view>
-  <view class="fullwidth">
-    <view class=" saveBtn ">
-    确认
-</view>
-  </view>
-    <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" type="range" show-confirm="{{ true }}" color="#015CAD" class="calendar" />
+    <view class="fullwidth">
+        <view class=" saveBtn " bindtap="saveUpdate">
+            确认
+        </view>
+    </view>
+   
+
 </view>

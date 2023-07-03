@@ -1,11 +1,13 @@
-// pages/manAdd/manAdd.js
+import model from '../../utils/mock'
+import moment from 'moment';
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        taskList: [],
+        show: false
     },
 
     /**
@@ -14,7 +16,45 @@ Page({
     onLoad(options) {
 
     },
+    addTask(){
+        wx.navigateTo({
+          url: '../addTask/addTask',
+        })
+    },
+    showCalendar() {
+        this.setData({
+            show: true
+        })
+    },
+    onClose() {
+        this.setData({
+            show: false,
+            startDate: '',
+            endDate: ''
+        })
+    },
+    onConfirm(e) {
+        const dateList = e.detail
+        let startDate = moment(dateList[0]).format('YYYY-MM-DD')
+        let endDate = moment(dateList[1]).format('YYYY-MM-DD')
+        this.setData({
+            startDate,
+            endDate,
+            show: false
+        })
+    },
 
+    getTaskList() {
+        const taskList = model.getTaskList()
+        taskList.map(e => {
+            e.year = '2023' //通过moment获取
+            e.principals = e.principalList.join(',')
+
+        })
+        this.setData({
+            taskList
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -26,12 +66,13 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        if(typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-          this.getTabBar().setData({
-            selected: "manAdd"
-          })
+        if (typeof this.getTabBar === 'function' &&
+            this.getTabBar()) {
+            this.getTabBar().setData({
+                selected: "manAdd"
+            })
         }
+        this.getTaskList()
     },
 
     /**

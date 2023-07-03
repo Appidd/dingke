@@ -1,0 +1,93 @@
+/* pages/userSum/userSum.wxss */
+page{
+    background-color: #F5F5F5;
+}
+
+.filter_box{
+    padding: 20rpx 32rpx 32rpx 32rpx;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    background-color: #fff;
+}
+.filter_box input{
+width: 240rpx;
+height: 64rpx;
+background-color: #F4F4F4;
+text-align: center;
+}
+.calendar_icon{
+    width: 48rpx;
+    height: 48rpx;
+}
+.scroll_container{
+    margin-top: 20rpx;
+    flex-grow: 1;
+    width: 100%;
+    /* background-color: red; */
+    position: relative;
+    border-radius: 32rpx 0rpx 0rpx 32rpx;
+}
+.scroll_box{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 750rpx;
+    position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   padding: 40rpx;
+   padding-bottom: env(safe-area-inset-bottom);
+   background-color: #fff;
+   border-radius: 32rpx 32rpx 0rpx 0rpx;
+}
+
+.calendar {
+    --calendar-height: 618px;
+  }
+  .fullwidth{
+    width: 100%;
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    box-sizing: border-box;
+  background-color: #fff;
+}
+  .saveBtn{
+    width: 686rpx;
+    box-sizing: border-box;
+    line-height: 96rpx;
+    text-align: center;
+    color: #fff;
+    height: 96rpx;
+    background: #015CAD;
+    border-radius: 16rpx 16rpx 16rpx 16rpx;
+    opacity: 1;
+    font-weight: bold;
+    font-size: 28rpx;
+    margin-bottom: 48rpx;
+}
+.number_box{
+    display: flex;
+    /* width: 654rpx;/ */
+height: 216rpx;
+background: #F4F4F4;
+border-radius: 32rpx 32rpx 32rpx 32rpx;
+opacity: 1;
+align-items: center;
+justify-content: center;
+
+}
+.st_icon{
+    height: 84rpx;
+    width: 84rpx;
+}
+.scontainer{
+    height: 600rpx;
+}

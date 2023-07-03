@@ -1,0 +1,54 @@
+<view class="container padding_box">
+    <view class="flex_line">
+        <image src="../../images/icon/car.png" mode="aspectFill" class="icon_car" />
+        <view style="color:#015CAD;font-size:28rpx;margin-left:36rpx;" class="blod">
+            车辆信息
+        </view>
+    </view>
+    <view class="flex_line " style="justify-content: space-between;">
+        <view class="left_item">
+            <view class="blod">
+                车型、车牌号：
+            </view>
+            <view style="color:#979797">
+                本田(沪A25V51)
+            </view>
+        </view>
+        <view class="left_item">
+            <view class="blod">
+                所属人
+            </view>
+            <view style="color:#979797">
+                王刚
+            </view>
+        </view>
+    </view>
+    <view class="flex_line " style="justify-content: space-between;">
+        <view class="all_line_item">
+            <view class="blod">
+                保险有效日期：
+            </view>
+            <view style="color:#979797">
+                2018.06.21-2023.06.21
+            </view>
+        </view>
+
+    </view>
+    <view class="only_title">
+        行驶证
+    </view>
+    <view class="image_box">
+        <image src="" mode="" class="img_item" wx:for="{{3}}" mode="aspectFill" />
+    </view>
+    <view class="only_title">
+        保险单
+    </view>
+    <view class="image_box">
+        <image src="" mode="" class="img_item" wx:for="{{2}}" mode="aspectFill" />
+    </view>
+    <view class="fullwidth">
+        <view class=" saveBtn ">
+            删除
+        </view>
+    </view>
+</view>

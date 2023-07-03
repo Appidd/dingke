@@ -1,0 +1,34 @@
+/* pages/mCar/mCar.wxss */
+.fullwidth{
+    width: 100%;
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    box-sizing: border-box;
+  
+}
+.scroll_box{
+    width: 100%;
+    position: relative;
+    flex-grow: 1;
+}
+.scroll_view{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+   
+}
+.saveBtn{
+    width: 686rpx;
+    box-sizing: border-box;
+    line-height: 96rpx;
+    text-align: center;
+    color: #fff;
+    height: 96rpx;
+    background: #015CAD;
+    border-radius: 16rpx 16rpx 16rpx 16rpx;
+    opacity: 1;
+    font-weight: bold;
+    font-size: 28rpx;
+    margin-bottom: 48rpx;
+}

@@ -1,0 +1,136 @@
+/* pages/userMine/userMine.wxss */
+page{
+    background-color: #fff;
+}
+.scroll_container{
+    flex-grow: 1;
+    width: 100%;
+    /* background-color: red; */
+    position: relative;
+}
+.scroll_box{
+    width: 750rpx;
+    position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   padding-bottom: env(safe-area-inset-bottom);
+}
+.page_container{
+ width: 100%;
+ padding: 20rpx 32rpx 0rpx 32rpx;
+ box-sizing: border-box;
+}
+.userInfo{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+.avatar{
+    height: 124rpx;
+    width: 124rpx;
+    border-radius: 50%;
+}
+.name_phone{
+    /* width: 330rpx; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-left: 68rpx;
+}
+.name{
+    font-size: 40rpx;
+    font-weight: bold;
+}
+.phone{
+    font-size: 28rpx;
+    letter-spacing: 2px;
+}
+.edit_btn{
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: flex-end;
+}
+.edit_btn view{
+    width: 192rpx;
+height: 64rpx;
+background: #015CAD;
+border-radius: 40rpx 40rpx 40rpx 40rpx;
+opacity: 1;
+font-size: 24rpx;
+line-height: 64rpx;
+text-align: center;
+color: #fff;
+}
+.idcard{
+    height: 48rpx;
+    width: 48rpx;
+}
+.flex_begin{
+    display: flex;
+    color: #015CAD;
+    font-size: 28rpx;
+    font-weight: bold;
+    line-height: 48rpx;
+    margin-top: 16rpx;
+    align-items: center;
+}
+.van-cell,.van-collapse-item__content {
+    padding-left: 0rpx !important;
+    padding-right: 0rpx !important;
+}
+.van-cell__value{
+    color: #000E1A  !important;
+    display: block !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+.idcard_box{
+    display: flex;
+    justify-content: space-between;
+}
+.idcard_img{
+    width: 312rpx;
+height: 170rpx;
+border-radius: 16rpx 16rpx 16rpx 16rpx;
+opacity: 1;
+background-color: #F5F5F5;
+text-align: center;
+line-height: 170rpx;
+}
+.edit{
+width: 32rpx;
+height: 32rpx;
+margin-left: 32rpx;
+}
+.fullwidth1{
+    position: fixed;
+    bottom: 192rpx;
+    width: 100%;
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    box-sizing: border-box;
+}
+.fullwidth{
+    position: fixed;
+    bottom: 48rpx;
+    width: 100%;
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    box-sizing: border-box;
+  
+}
+.saveBtn{
+    /* width: 686rpx; */
+    box-sizing: border-box;
+    line-height: 96rpx;
+    text-align: center;
+    color: #fff;
+    height: 96rpx;
+    background: #FE7272;
+    border-radius: 16rpx 16rpx 16rpx 16rpx;
+    opacity: 1;
+    font-weight: bold;
+    font-size: 28rpx;
+}

@@ -1,2 +1,30 @@
-<!--pages/manLook/manLook.wxml-->
-<text>pages/manLook/manLook.wxml</text>
+<view class="container">
+    <navigation userName="李四" isManage="{{true}}"></navigation>
+
+
+    <view class="container_box">
+        <view class="model_Info">
+            <view class="model_people model_item" bindtap="tomPeople">
+                <image src="../../images/icon/peopleInfo.png" mode="aspectFill" class="model_icon" />
+                <view>
+                    人员信息
+                </view>
+            </view>
+            <view class="model_car model_item" bindtap="tomCar">
+                <image src="../../images/icon/carInfo.png" mode="aspectFill" class="model_icon" />
+                <view>
+                    车辆信息
+                </view>
+            </view>
+        </view>
+
+        <view class="statistic_box" bindtap="toStatistic">
+            <image src="../../images/icon/statistic.png" mode="aspectFill" class="model_icon"/>
+            <view style="margin-left: 24rpx;">
+                任务统计
+            </view>
+        </view>
+    </view>
+
+
+</view>

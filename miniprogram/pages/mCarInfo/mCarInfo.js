@@ -1,11 +1,18 @@
-// pages/test/test.js
+// pages/mCarInfo/mCarInfo.js
+import {
+    deleteObj
+} from "../../utils/deleteFile"
+import {
+    method
+} from "../../utils/api.js"
+import moment from "moment"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        show:true
+     
     },
 
     /**

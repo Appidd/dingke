@@ -1,2 +1,28 @@
-<!--pages/manAdd/manAdd.wxml-->
-<text>pages/manAdd/manAdd.wxml</text>
+<view class="container">
+    <navigation userName="李四" isManage="{{true}}"></navigation>
+    <view class="filter_box" bindtap="showCalendar">
+        <input type="text" placeholder="请选择开始日期" disabled  value="{{startDate}}"/>
+       <view>
+           -
+       </view>
+        <input type="text" placeholder="请选择结束日期" disabled value="{{endDate}}"/>
+        <image src="../../images/icon/calendar.png" mode="aspectFill" class="calendar_icon"/>
+    </view>
+  
+   
+    <view class="scroll_container">
+        <scroll-view scroll-y class="scroll_box">
+           <mTaskItem wx:for="{{taskList}}" taskItem="{{item}}" taskIndex="{{index+1}}" type="{{1}}"></mTaskItem>
+           <view class="tabberHeight"></view>
+        </scroll-view>
+    </view>
+    <view class="fullwidth" bindtap="addTask">
+        <view class=" saveBtn btn ">
+            增添任务
+        </view>
+      
+    </view>
+    <view  style="  background-color: #fff;height: 160rpx;"></view>
+   
+</view>
+

@@ -1,0 +1,36 @@
+<view class="container">
+   
+    <view class="filter_box" bindtap="showCalendar">
+        <input type="text" placeholder="请选择开始日期" disabled  value="{{startDate}}"/>
+       <view>
+           -
+       </view>
+        <input type="text" placeholder="请选择结束日期" disabled value="{{endDate}}"/>
+        <image src="../../images/icon/calendar.png" mode="aspectFill" class="calendar_icon"/>
+    </view>
+    
+   
+    <view class="scroll_container">
+        <scroll-view scroll-y class="scroll_box">
+           <view class="number_box">
+               <image src="../../images/icon/st.png" mode="aspectFill" class="st_icon"/>
+               <view style="color: #015CAD;font-size: 28rpx;margin-left: 32rpx;">
+                   任务数量：
+               </view>
+               <text style="color: #015CAD;font-weight: bold;font-size: 64rpx;">365</text>
+           </view>
+           <view class="scontainer">
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+</view>
+
+        </scroll-view>
+    </view>
+
+    <view class="fullwidth">
+    <view class=" saveBtn ">
+        导出任务统计信息
+    </view>
+</view>
+    <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm"  type="range" show-confirm="{{ true }}" color="#015CAD"  class="calendar"/>
+</view>
+

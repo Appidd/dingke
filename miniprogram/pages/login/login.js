@@ -1,4 +1,12 @@
 // pages/login/login.js
+import * as storage from '../../utils/storage.js'
+import {
+    deleteObj
+} from "../../utils/deleteFile"
+import {
+    method
+} from "../../utils/api.js"
+import moment from "moment"
 Page({
 
     /**
@@ -14,10 +22,29 @@ Page({
     onLoad(options) {
 
     },
-    toUserTask(){
-        wx.switchTab({
-          url: '../userTask/userTask',
+    userLogin(){
+        wx.showLoading({
+          title: '登陆中...',
         })
+        method.cloudApi('userLogin').then(res=>{
+            console.log(res)
+            wx.hideLoading()
+            wx.showToast({
+              title: '登陆成功',
+            })
+            storage.set('token',res.result)
+            setTimeout(e=>{
+             wx.navigateBack()
+            },1000)
+        }).catch(err=>{
+            wx.showToast({
+                title: '登陆失败',
+                icon:'error'
+              })
+            console.log(err)
+            wx.hideLoading()
+        })
+       
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

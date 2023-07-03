@@ -14,7 +14,21 @@ Page({
     onLoad(options) {
 
     },
-
+    tomPeople(){
+        wx.navigateTo({
+          url: '../mPeople/mPeople',
+        })
+    },
+    tomCar(){
+        wx.navigateTo({
+          url: '../mCar/mCar',
+        })
+    },
+    toStatistic(){
+        wx.navigateTo({
+          url: '../statistic/statistic',
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

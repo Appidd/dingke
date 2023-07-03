@@ -3,7 +3,7 @@
         
             <image src="../../images/icon/logo.png" mode="aspectFill" class="logo_icon"/>
             <view>
-                {{userName}}{{isManage?'（管理）':''}}
+                {{userName}}{{isManager?'（管理）':''}}
             </view>
     </view>
 </view>

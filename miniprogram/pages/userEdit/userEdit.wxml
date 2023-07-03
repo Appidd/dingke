@@ -1,0 +1,92 @@
+<view class="container" >
+    <view class="avatar_box">
+        <label>
+            <button open-type="chooseAvatar" bindchooseavatar="onChooseAvatar" hidden></button>
+            <image src="{{avatarUrl||'../../images/icon/avatar.png'}}" mode="aspectFill" class="avatar" />
+            <image src="../../images/icon/camer.png" mode="aspectFill" class="camer" />
+        </label>
+
+    </view>
+    <view class="title fullwidth">
+        项目名称
+    </view>
+    <view class="fullwidth">
+        <input type="text" placeholder="请输入您的真实姓名" class="input_box" model:value="{{userName}}" />
+    </view>
+    <view class="title fullwidth">
+        性别
+    </view>
+    <picker style="width: 100%;" class="fullwidth" range="{{sexList}}" value="name" bindchange="confirmSex">
+        <view class=" input_box" style="display: flex;justify-content: space-between;">
+            <view>
+                {{sex?'男':'女'}}
+            </view>
+            <van-icon name="arrow-down" />
+        </view>
+    </picker>
+    <view class="title fullwidth">
+        联系电话
+    </view>
+    <view class="fullwidth">
+        <input type="text" placeholder="请输入您的电话号码" class="input_box" model:value="{{iphone}}" type="number" />
+    </view>
+    <view class="title fullwidth">
+        身份证号
+    </view>
+    <view class="fullwidth">
+        <input type="text" placeholder="请输入您的身份证号" class="input_box" model:value="{{idCard}}" type="number" />
+    </view>
+    <view class="title fullwidth">
+        家庭住址
+    </view>
+    <view class="fullwidth">
+        <input type="text" placeholder="请输入您的家庭住址" class="input_box" model:value="{{address}}" type="text" />
+    </view>
+    <view class="title fullwidth">
+        紧急联系人
+    </view>
+    <view class="fullwidth">
+        <input type="text" placeholder="请输入紧急联系人姓名" class="input_box" model:value="{{contactsName}}" type="text" />
+        <input type="text" placeholder="请输入紧急联系人电话" class="input_box" model:value="{{contactsPhone}}" type="number" style="margin-top: 20rpx;" />
+    </view>
+    <view class="title fullwidth">
+        身份证复印件
+    </view>
+    <view class="idcard_box">
+        <view class="idcard_img" bindtap="chooseIdCardGh" wx:if="{{!idCardGh}}">
+            国徽面
+        </view>
+        <view wx:else class="realimg_box">
+            <image src="{{idCardGh}}" mode="aspectFill" class="idcard_img"/>
+            <van-icon name="clear" style="position: absolute;top: 0;right: 10rpx;" bindtap="deleteIdCardGh" data-fileID="{{idCardGh}}"/>
+        </view>
+       
+        <view class="idcard_img" bindtap="chooseIdCardRx" wx:if="{{!idCardRx}}">
+            人像面
+        </view>
+        <view wx:else class="realimg_box" >
+            <image src="{{idCardRx}}" mode="aspectFill" class="idcard_img"/>
+            <van-icon name="clear" style="position: absolute;top: 0;right: 10rpx;" bindtap="deleteIdCardRx" data-fileID="{{idCardRx}}"/>
+        </view>
+       
+    </view>
+    <view class="title fullwidth">
+        特种证件照
+    </view>
+    <view class="fullwidth">
+        <input type="text" placeholder="请输入特种证件照名称" class="input_box" model:value="{{specialCertifiName}}" type="text" />
+    </view>
+
+    <view class="fullwidth">
+        <van-uploader file-list="{{ specialCertifiList }}" bind:after-read="afterRead" deletable="{{ true }}" bind:delete="deleteSpecial"/>
+    </view>
+   
+    <view class="fullwidth">
+        <view class=" saveBtn " bindtap="saveUpdate">
+            确认
+        </view>
+    </view>
+    <view style="height: 48rpx;">
+        
+    </view>
+</view>

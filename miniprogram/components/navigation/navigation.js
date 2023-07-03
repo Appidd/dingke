@@ -1,17 +1,13 @@
 // components/topNavigator/topNavigator.js
+import {
+    method
+} from "../../utils/api.js"
 Component({
     /**
      * 组件的属性列表
      */
     properties: {
-        userName: {
-            type: String,
-            value: '王琴'
-        },
-        isManage: {
-            type: Boolean,
-            value: false
-        }
+       
         
     },
 
@@ -19,7 +15,8 @@ Component({
      * 组件的初始数据
      */
     data: {
-
+        isManager:false,
+        userName:'李四'
     },
     lifetimes: {
         attached() {
@@ -51,15 +48,27 @@ Component({
                     })
                 },
             })
+            method.cloudApi('getUserInfo').then(res=>{
+                console.log(res)
+                if(res.result.data.length){
+                 let infoObj=res.result.data[0]
+                 that.setData({
+                    userName:infoObj.userName,
+                    isManager:infoObj.isManager?true:false
+                 })
+                }
+                
+            }).catch(err=>{
+            })
 
         }
-
+        
 
     },
     /**
      * 组件的方法列表
      */
     methods: {
-        
+      
     }
 })

@@ -14,7 +14,7 @@
     </view>
 
     <view class="bottom_fix ">
-        <view class="login_btn flex_center_align" bindtap="toUserTask">
+        <view class="login_btn flex_center_align" bindtap="userLogin">
             <image src="../../images/icon/wechat.png" mode="aspectFill" class="wechat_img"/>
             <view>
                 微信一键授权登录

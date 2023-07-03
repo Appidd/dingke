@@ -1,0 +1,76 @@
+/* pages/userEdit/userEdit.wxss */
+.avatar_box{
+    position: relative;
+    /* background-color: red; */
+}
+.avatar{
+    width: 176rpx;
+    height: 176rpx;
+    border-radius: 50%;
+}
+.camer{
+    position: absolute;
+    height: 48rpx;
+    width: 48rpx;
+    bottom: 20rpx;
+    right: 0;
+}
+.fullwidth{
+    width: 100%;
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    box-sizing: border-box;
+  
+}
+.title{
+    color: #000E1A;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+.input_box{
+width: 100%;
+height: 64rpx;
+background: #F4F4F4;
+border-radius: 8rpx 8rpx 8rpx 8rpx;
+line-height: 64rpx;
+color:#979797;
+font-size: 24rpx;
+padding: 0rpx 32rpx;
+box-sizing: border-box;
+}
+.idcard_box{
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.idcard_img{
+    width: 312rpx;
+height: 170rpx;
+border-radius: 16rpx 16rpx 16rpx 16rpx;
+opacity: 1;
+background-color: #F5F5F5;
+text-align: center;
+line-height: 170rpx;
+color: #979797;
+font-size: 24rpx;
+}
+.realimg_box{
+    /* background-color: red; */
+    position: relative;
+}
+.saveBtn{
+    width: 686rpx;
+    box-sizing: border-box;
+    line-height: 96rpx;
+    text-align: center;
+    color: #fff;
+    height: 96rpx;
+    background: #015CAD;
+    border-radius: 16rpx 16rpx 16rpx 16rpx;
+    opacity: 1;
+    font-weight: bold;
+    font-size: 28rpx;
+ 
+    margin-bottom: 50rpx;
+}

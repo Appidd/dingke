@@ -1,1 +1,78 @@
-/* pages/manAdd/manAdd.wxss */
+/* pages/userSum/userSum.wxss */
+page{
+    background-color: #F5F5F5;
+}
+.scroll_container{
+position: relative;
+flex-grow: 1;
+}
+.scroll_box{
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+ 
+  
+}
+.padding_bottom{
+    padding-bottom: env(safe-area-inset-bottom);
+}
+.filter_box{
+    padding: 20rpx 32rpx 48rpx 32rpx;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    background-color: #fff;
+}
+.filter_box input{
+width: 240rpx;
+height: 64rpx;
+background-color: #F4F4F4;
+text-align: center;
+}
+.calendar_icon{
+    width: 48rpx;
+    height: 48rpx;
+}
+.scroll_container{
+    flex-grow: 1;
+    width: 100%;
+    /* background-color: red; */
+    position: relative;
+}
+
+
+.calendar {
+    --calendar-height: 618px;
+  }
+
+.fullwidth {
+    width: 100%;
+    padding: 20rpx 32rpx 48rpx 32rpx;
+    box-sizing: border-box;
+    background-color: #fff;
+
+}
+
+.btn {
+    border-radius: 16rpx 16rpx 16rpx 16rpx;
+    font-weight: bold;
+    font-size: 28rpx;
+    width: 686rpx;
+    box-sizing: border-box;
+    line-height: 96rpx;
+    text-align: center;
+    color: #fff;
+    height: 96rpx;
+    
+}
+
+.saveBtn {
+    
+    background: #015CAD;
+}
+

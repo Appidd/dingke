@@ -1,8 +1,33 @@
-<view class="container">
-    <van-cell-group>
-        <van-cell title="身份证号：" value="5101831996040165039" border="{{ false }}" />
-        <van-cell title="家庭住址：" value="上海市黄浦区尚文路133号房间" border="{{ false }}" />
-        <van-cell title="紧急联系人：" value="杨过益（17323014526）" border="{{ false }}" />
-    </van-cell-group>
+<view class="container content_box">
+    <view class="scroll_container">
+    <scroll-view class="scroll_box" scroll-y>
+        
+  
+        <van-cell-group>
+            <van-cell title="工作日期：" value="2023年06月23日" />
+            <van-cell title="项目编号：" value="0256745（2023）" />
+            <van-cell title="项目名称：" value="上海定科工作管理" />
 
+            <van-cell title="联系人：" value="李书文" />
+            <van-cell title="负责人：" value="王琴" />
+            <van-cell title="协同人：" value="张世伟、李秀、王东升" />
+
+            <van-cell title="到达地点：" value="上海办公大厦A楼12号" />
+            <van-cell title="到达时间：" value="2023年06月23日 15:26" />
+            <van-cell title="车辆：" value="本田(沪A25V51)" />
+            <van-cell title="备注：" value="无" />
+
+        </van-cell-group>
+
+        
+        
+    </scroll-view>
+
+    </view>
+    <view class="fullwidth" bindtap="doneWork">
+        <view class=" saveBtn btn ">
+            完成任务
+        </view>
+    </view>
+   
 </view>

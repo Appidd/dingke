@@ -1,0 +1,76 @@
+/* pages/mCarInfo/mCarInfo.wxss */
+.padding_box{
+    padding: 48rpx;
+    width: 100%;
+    box-sizing: border-box;
+}
+.blod{
+    font-weight: bold;
+}
+.flex_line{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+.icon_car{
+    width: 48rpx;
+    height: 48rpx;
+}
+.left_item{
+    font-size: 24rpx;
+    display: flex;
+    margin-top: 32rpx;
+    min-width: 200rpx;
+    justify-content: space-between;
+}
+.all_line_item{
+    font-size: 24rpx;
+    display: flex;
+    margin-top: 32rpx;
+    width: 100%;
+    justify-content: space-between;
+}
+.only_title{
+    width: 100%;
+    font-size: 24rpx;
+    font-weight: bold;
+    margin-top: 32rpx;
+}
+.image_box{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.img_item{
+    width: 312rpx;
+height: 170rpx;
+border-radius: 16rpx 16rpx 16rpx 16rpx;
+background-color: rosybrown;
+margin-top: 20rpx;
+
+}
+.fullwidth{
+    position: fixed;
+    bottom: 48rpx;
+    width: 100%;
+    padding: 20rpx 32rpx 0rpx 32rpx;
+    box-sizing: border-box;
+  
+}
+.saveBtn{
+    /* width: 686rpx; */
+    box-sizing: border-box;
+    line-height: 96rpx;
+    text-align: center;
+    color: #fff;
+    height: 96rpx;
+    background: #FE7272;
+    border-radius: 16rpx 16rpx 16rpx 16rpx;
+    opacity: 1;
+    font-weight: bold;
+    font-size: 28rpx;
+
+}

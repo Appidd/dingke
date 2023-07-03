@@ -1,4 +1,4 @@
-<view class="task_item_box">
+<view class="task_item_box" bindtap="toDetail">
 <view class="task_num_top">
    <view class="task_num_top_left">
        <image src="../../images/icon/task_icon.png" mode="aspectFill"/>

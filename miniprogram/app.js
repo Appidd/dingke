@@ -1,4 +1,5 @@
 // app.js
+import * as storage from './utils/storage.js'
 App({
   onLaunch: function () {
     if (!wx.cloud) {
@@ -15,5 +16,8 @@ App({
     }
 
     this.globalData = {};
-  }
+  },
+  isLogin() {
+    return storage.get('token') ? true : false
+},
 });
