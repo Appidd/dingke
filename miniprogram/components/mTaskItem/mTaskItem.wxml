@@ -5,14 +5,14 @@
    <view class="task_num_top_left">
        <image src="../../images/icon/task_icon.png" mode="aspectFill"/>
        <view class="main_color">
-           0{{taskIndex}}
+           {{taskIndex}}
        </view>
    </view>
    <view class="task_num_top_right">
-        <view class="{{taskItem.status==0?'gray_color':'green_color'}}">
-           {{taskItem.status==0?'草稿':'已发布'}}
+        <view class="{{taskItem.progress==0?'gray_color':'green_color'}}">
+           {{taskItem.progress==0?'草稿':'已发布'}}
        </view>
-       <image src="{{taskItem.status==0?'../../images/icon/arrow_gray.png':'../../images/icon/arrow_green.png'}}" mode="aspectFill" class="arrow"/>
+       <image src="{{taskItem.progress==0?'../../images/icon/arrow_gray.png':'../../images/icon/arrow_green.png'}}" mode="aspectFill" class="arrow"/>
     </view>
 </view>
     <view class="task_num_bottom">
@@ -25,7 +25,7 @@
                     项目编号：
                 </view>
                 <view>
-                    {{taskItem.serialNumber}}（2023）
+                    {{taskItem.project_number}}
                 </view>
             </view>
             <view class="list_item">
@@ -33,7 +33,7 @@
                     项目名称：
                 </view>
                 <view class="task_list_re">
-                    {{taskItem.taskName}}
+                    {{taskItem.project_name}}
                 </view>
             </view>
            
@@ -42,7 +42,7 @@
                     日期：
                 </view>
                 <view class="main_color task_list_re">
-                    2023年6月02日
+                    {{taskItem.arrive_time}}
                 </view>
             </view>
         </view>

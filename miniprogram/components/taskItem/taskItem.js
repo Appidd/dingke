@@ -30,11 +30,16 @@ Component({
      */
     methods: {
         toDetail(){
-            if(getApp().isLogin()){
+            if(getApp().isLogin()&&this.data.type===0){
                 wx.navigateTo({
-                    url: '../../pages/taskDetail/taskDetail',
+                    url: '../../pages/taskDetail/taskDetail?id='+this.data.taskItem._id,
                   })
-            }else{
+            }else if(getApp().isLogin()&&this.data.type===1){
+                wx.navigateTo({
+                    url: '../../pages/taskReport/taskReport?id='+this.data.taskItem._id,
+                  })
+            }
+            else{
                 wx.navigateTo({
                   url: '../../pages/login/login',
                 })

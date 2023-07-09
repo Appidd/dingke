@@ -30,9 +30,17 @@ Component({
      */
     methods: {
         toDetail(){
-            wx.navigateTo({
-              url: '../../pages/taskDetail/taskDetail',
-            })
+            if(getApp().isLogin()){
+
+                wx.navigateTo({
+                    url: '../../pages/addTask/addTask?id='+this.data.taskItem._id,
+                  })
+            }
+            else{
+                wx.navigateTo({
+                  url: '../../pages/login/login',
+                })
+            }
         },
     }
 })

@@ -11,24 +11,27 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     const openid = wxContext.OPENID
 
-        const result = await db.collection('userList').where({
+    const result = await db.collection('userList').where({
+        openid: openid
+    }).get()
+
+    if (result.data.length) {
+        // 用户已存在
+
+        return result
+    } else {
+        //用户不存在
+        await db.collection('userList').add({
+            data: {
+                openid,
+                isManager: false
+            }
+        })
+
+        return await db.collection('userList').where({
             openid: openid
         }).get()
+    }
 
-        if(result.data.length){
-            // 用户已存在
-           
-            return openid
-        }else{
-            //用户不存在
-            await db.collection('userList').add({
-                data:{
-                    openid,
-                    isManager:false
-                }
-            })
-            return openid
-        }
 
-   
 };

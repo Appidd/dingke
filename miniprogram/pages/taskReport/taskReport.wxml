@@ -1,61 +1,76 @@
-<navigation userName="李四" isManage="{{true}}"></navigation>
+<wxs module="utils" src="../../utils/format.wxs"></wxs>
+<template name="inputItem">
+    <view class="input-container">
+        <input class="input-box left_input" placeholder="请输入费用" bindinput="onInputFee" data-item="{{item}}" type="number" value="{{item.fee}}" />
+        <input class="input-box right_input" placeholder="具体消费信息" bindinput="onInputDetail" data-item="{{item}}" type="text" value="{{item.detail}}" />
+    </view>
+</template>
 <view class="title fullwidth">
     项目名称
 </view>
 <view class="fullwidth">
-    <input type="text" placeholder="请输入项目名称" class=" input_box" value="上海定科工作管理" />
+    <input type="text" placeholder="请输入项目名称" class="input_box" value="{{project_name}}" disabled />
 </view>
 
 <view class="title fullwidth">
     项目编号
 </view>
 <view class="fullwidth">
-    <input type="text" placeholder="请输入项目编号" class=" input_box" value="0256745（2023）" />
+    <input type="text" placeholder="请输入项目编号" class=" input_box" value="{{project_number}}" disabled />
 </view>
 <view class="title fullwidth">
     工作地点
 </view>
 <view class="fullwidth">
-    <input type="text" placeholder="请输入工作地点" class=" input_box" value="" />
+    <input type="text" placeholder="请输入工作地点" class=" input_box" value="{{work_location}}" disabled />
 </view>
 <view class="title fullwidth">
     工作内容
 </view>
 <view class="fullwidth">
-    <input type="text" placeholder="请输入工作内容" class=" input_box" value="" />
+    <input type="text" placeholder="请输入工作内容" class=" input_box" model:value="{{project_content}}" />
 </view>
 <view class="title fullwidth">
     异常汇报
 </view>
 <view class="fullwidth">
-    <input type="text" placeholder="请输入异常信息" class=" input_box" value="" />
+    <input type="text" placeholder="请输入异常信息" class=" input_box" model:value="{{project_error}}" />
 </view>
 <view class="title fullwidth">
     联系人
 </view>
 <view class="fullwidth">
-    <input type="text" placeholder="请输入联系人信息" class=" input_box" value="" />
+    <input type="text" placeholder="请输入联系人信息" class=" input_box" value="{{contact_person}}" disabled />
 </view>
 <view class="title fullwidth">
     定科负责人
 </view>
-<view class="fullwidth">
+<picker mode="selector" range="{{user_list}}" range-key="name" bindchange="getProjectManager">
+    <view class="fullwidth">
+        <view class=" input_box" style="display: flex;justify-content: space-between;">
+            <view>
+                {{project_manager.name||'请选择负责人'}}
+            </view>
+            <van-icon name="arrow-down" />
+        </view>
+    </view>
+</picker>
+<view class="title fullwidth">
+    协同人员（可多选）
+</view>
+<view class="fullwidth" bindtap="showSynergy">
     <view class=" input_box" style="display: flex;justify-content: space-between;">
         <view>
-            王琴
+            {{user_list_string||'请添加协同人员'}}
         </view>
         <van-icon name="arrow-down" />
     </view>
 </view>
-<view class="title fullwidth">
-    协同人员（可多选）
-</view>
-<view class="fullwidth">
-    <view class=" input_box" style="display: flex;justify-content: space-between;">
-        <view>
-            王琴、张世伟、王东升
+<view class="fullwidth" wx:if="{{show}}">
+    <view class="pList">
+        <view wx:for="{{user_list}}" class="pitem {{item.checked?'checked':''}}" bindtap="checkSynergies" data-item="{{item}}" wx:key="openid">
+            {{item.name}}
         </view>
-        <van-icon name="arrow-down" />
     </view>
 </view>
 <view class="title fullwidth">
@@ -66,42 +81,48 @@
         <view>
             常规
         </view>
-        <input type="text" class="left_input_1" value="3小时" />
+        <input type="text" class="left_input_1" model:value="{{overtime_rule}}" placeholder="3小时" />
     </view>
 
     <view class="double_list">
         <view>
             电科院
         </view>
-        <input type="text" class="left_input_1" value="3小时" />
+        <input type="text" class="left_input_1" model:value="{{overtime_dianke}}" />
     </view>
 </view>
 <view class="title fullwidth">
     乘车方式
 </view>
 <view class="double_list fullwidth flex_between">
-    <view class="double_list" >
+    <view class="double_list">
         <view style="white-space: nowrap;">
             司机
         </view>
-        <view class=" input_box" style="display: flex;justify-content: space-between;width: 184rpx;margin-left: 24rpx;">
-            <view>
-                王琴
+        <picker mode="selector" range="{{user_list}}" range-key="name" bindchange="getProjectDriver">
+            <view class=" input_box" style="display: flex;justify-content: space-between;max-width: 184rpx;margin-left: 24rpx;">
+                <view>
+                    {{project_driver.name||'选择司机'}}
+                </view>
+                <van-icon name="arrow-down" />
             </view>
-            <van-icon name="arrow-down" />
-        </view>
+        </picker>
     </view>
 
-    <view class="double_list" >
-        <view style="white-space: nowrap;">
+    <view class="double_list">
+        <view style="white-space: nowrap;margin-right: 24rpx;">
             车辆
         </view>
-        <view class=" input_box" style="display: flex;justify-content: space-between;width: 278rpx;margin-left: 24rpx;">
-            <view>
-                本田(沪A25V51)
+        <picker mode="selector" range="{{vehicle_list}}" range-key="carTypeNum" bindchange="getProjectVehicle">
+
+
+            <view class="input_box" style="display: flex;justify-content: space-between;box-sizing: border-box;">
+                <view style="min-width: 260rpx;padding: 0;flex-wrap: nowrap;">
+                    {{project_vehicle.carTypeNum||'选择车辆'}}
+                </view>
+                <van-icon name="arrow-down" />
             </view>
-            <van-icon name="arrow-down" />
-        </view>
+        </picker>
     </view>
 
 </view>
@@ -110,76 +131,88 @@
     公里数
 </view>
 <view class="double_list fullwidth flex_between">
-    <view class="double_list" >
+    <view class="double_list">
         <view style="white-space: nowrap;">
-            本田(沪A25V51)
+            {{project_vehicle.carTypeNum}}
         </view>
-        <input type="text" class="left_input_1" value="238公里" style="flex-grow: 1;"/>
+        <input type="text" class="left_input_1" model:value="{{mileage}}" style="flex-grow: 1;" placeholder="公里数（320km）"/>
     </view>
+</view>
+<view class="title_operate fullwidth">
+    <view class="title">
+        交通费
+    </view>
+    <view class="operate">
+        <image src="../../images/icon/add.png" mode="" class="operate_icon add_icon" bindtap="onAddInput" data-type="carfare" />
+        <image src="../../images/icon/delete.png" mode="" class="operate_icon delete_icon" bindtap="onDeleteInput" data-type="carfare" wx:if="{{transportFeeList.length}}" />
+    </view>
+</view>
+<block wx:for="{{transportFeeList}}" wx:for-item="item">
+    <template is="inputItem" data="{{item}}"></template>
+</block>
+<view class="title_operate fullwidth">
+    <view class="title">
+        餐饮费
+    </view>
+    <view class="operate">
+        <image src="../../images/icon/add.png" mode="" class="operate_icon add_icon" bindtap="onAddInput" data-type="eatery" />
+        <image src="../../images/icon/delete.png" mode="" class="operate_icon delete_icon" bindtap="onDeleteInput" data-type="eatery" wx:if="{{eateryFeelist.length}}" />
+    </view>
+</view>
+<block wx:for="{{eateryFeelist}}" wx:for-item="item">
+    <template is="inputItem" data="{{item}}"></template>
+</block>
+<view class="title_operate fullwidth">
+    <view class="title">
+        住宿费
+    </view>
+    <view class="operate">
+        <image src="../../images/icon/add.png" mode="" class="operate_icon add_icon" bindtap="onAddInput" data-type="accommodation" />
+        <image src="../../images/icon/delete.png" mode="" class="operate_icon delete_icon" bindtap="onDeleteInput" data-type="accommodation" wx:if="{{accommodationFeeList.length}}" />
+    </view>
+</view>
+<block wx:for="{{accommodationFeeList}}" wx:for-item="item">
+    <template is="inputItem" data="{{item}}"></template>
+</block>
 
-
-</view>
-<view class="title fullwidth">
-    交通费
-</view>
-<view class="double_list fullwidth flex_between">
-    <view class="double_list" >
-        <input type="text" class="left_input_3"   placeholder="238元"/>
-        <input type="text" class="left_input_1"  style="flex-grow: 1;" placeholder="具体消费信息"/>
+<view class="title_operate fullwidth">
+    <view class="title">
+        机械台班费
+    </view>
+    <view class="operate">
+        <image src="../../images/icon/add.png" mode="" class="operate_icon add_icon" bindtap="onAddInput" data-type="mechanical" />
+        <image src="../../images/icon/delete.png" mode="" class="operate_icon delete_icon" bindtap="onDeleteInput" data-type="mechanical" wx:if="{{mechanicalFeeList.length}}" />
     </view>
 </view>
-
-<view class="title fullwidth">
-    餐饮费
-</view>
-<view class="double_list fullwidth flex_between">
-    <view class="double_list" >
-        <input type="text" class="left_input_3"   placeholder="238元"/>
-        <input type="text" class="left_input_1"  style="flex-grow: 1;" placeholder="具体消费信息"/>
+<block wx:for="{{mechanicalFeeList}}" wx:for-item="item">
+    <template is="inputItem" data="{{item}}"></template>
+</block>
+<view class="title_operate fullwidth">
+    <view class="title">
+        其他费用
+    </view>
+    <view class="operate">
+        <image src="../../images/icon/add.png" mode="" class="operate_icon add_icon" bindtap="onAddInput" data-type="other" />
+        <image src="../../images/icon/delete.png" mode="" class="operate_icon delete_icon" bindtap="onDeleteInput" data-type="other" wx:if="{{otherFeeList.length}}" />
     </view>
 </view>
-<view class="title fullwidth">
-    住宿费
-</view>
-<view class="double_list fullwidth flex_between">
-    <view class="double_list" >
-        <input type="text" class="left_input_3"   placeholder="238元"/>
-        <input type="text" class="left_input_1"  style="flex-grow: 1;" placeholder="具体消费信息"/>
-    </view>
-</view>
-
-<view class="title fullwidth">
-    机械台班费
-</view>
-<view class="double_list fullwidth flex_between">
-    <view class="double_list" >
-        <input type="text" class="left_input_3"   placeholder="238元"/>
-        <input type="text" class="left_input_1"  style="flex-grow: 1;" placeholder="具体消费信息"/>
-    </view>
-</view>
-<view class="title fullwidth">
-    其他费用
-</view>
-<view class="double_list fullwidth flex_between">
-    <view class="double_list" >
-        <input type="text" class="left_input_3"   placeholder="238元"/>
-        <input type="text" class="left_input_1"  style="flex-grow: 1;" placeholder="具体消费信息"/>
-    </view>
-</view>
+<block wx:for="{{otherFeeList}}" wx:for-item="item">
+    <template is="inputItem" data="{{item}}"></template>
+</block>
 <view class="title fullwidth">
     备注
 </view>
 <view class="double_list fullwidth flex_between">
-    <textarea value="" placeholder="请输入备注信息" class="remark"/>
+    <textarea  placeholder="请输入备注信息" class="remark" model:value="{{remark}}"/>
 </view>
 <view class="title fullwidth">
     报销凭证
 </view>
 <view class="fullwidth">
-    <van-uploader file-list="{{ fileList }}" />
+    <van-uploader file-list="{{ reimburseList }}" bind:after-read="afterRead" deletable="{{ true }}" bind:delete="deleteSpecial"/>
 </view>
 <view class="fullwidth">
-    <view class=" saveBtn ">
+    <view class=" saveBtn" bindtap="report">
         完成汇报
     </view>
 </view>

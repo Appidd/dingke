@@ -1,0 +1,9 @@
+var joinArray = function(array) {
+    console.log(array)
+    return array.join('、');
+  }
+  
+  module.exports = {
+    joinArray: joinArray
+  
+  }

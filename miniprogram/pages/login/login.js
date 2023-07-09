@@ -26,25 +26,16 @@ Page({
         wx.showLoading({
           title: '登陆中...',
         })
-        method.cloudApi('userLogin').then(res=>{
-            console.log(res)
+        storage.set('token',true)
+        setTimeout(res=>{
             wx.hideLoading()
             wx.showToast({
               title: '登陆成功',
             })
-            storage.set('token',res.result)
-            setTimeout(e=>{
-             wx.navigateBack()
-            },1000)
-        }).catch(err=>{
-            wx.showToast({
-                title: '登陆失败',
-                icon:'error'
-              })
-            console.log(err)
-            wx.hideLoading()
-        })
-       
+        },1000)
+        setTimeout(res=>{
+            wx.navigateBack()
+        },1000)
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

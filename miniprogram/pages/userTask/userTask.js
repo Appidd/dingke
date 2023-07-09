@@ -1,12 +1,21 @@
 // pages/userTask/userTask.js
 import model from '../../utils/mock'
+import moment from 'moment'
+import {
+    method
+} from "../../utils/api.js"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-   taskList:[]
+        page_number: 0,
+        page_size: 20,
+        from: 0,
+        start_time: moment().startOf('day').valueOf(),
+        task_list: [],
+        total: 0
     },
 
     /**
@@ -15,7 +24,62 @@ Page({
     onLoad(options) {
 
     },
-
+    reSet(){
+        this.setData({
+            page_number: 0,
+            page_size: 20,
+            task_list: [],
+            total: 0
+        })
+    },
+    getTimestamp(e) {
+        this.setData({
+            start_time: e.detail,
+            page_number: 0,
+            page_size: 20,
+            task_list: [],
+            total: 0
+        })
+        this.getRTaskList()
+    },
+    getRTaskList() {
+        const that = this
+        let task_list = this.data.task_list
+        const {
+            page_number,
+            page_size,
+            from,
+            start_time
+        } = this.data
+        wx.showLoading()
+        method.cloudApi('getTaskList', {
+            page_number,
+            page_size,
+            from,
+            start_time
+        }).then(res => {
+            console.log(res)
+            wx.hideLoading()
+            const new_array = task_list.concat(res.result.data)
+            console.log(new_array)
+            that.setData({
+                task_list: new_array,
+                total: res.result.total
+            })
+        }).catch(err => {
+            console.log(err)
+            wx.hideLoading()
+        })
+    },
+    getMore() {
+        const page_number = this.data.page_number
+        if (this.total > this.data.task_list.length) {
+            this.setData({
+                page_number:page_number+1
+            })
+            this.getRTaskList()
+        }
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -26,25 +90,20 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        if(typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-          this.getTabBar().setData({
-            selected: "userTask"
-          })
+        this.reSet()
+        if (typeof this.getTabBar === 'function' &&
+            this.getTabBar()) {
+            this.getTabBar().setData({
+                selected: "userTask"
+            })
         }
-       this.getTaskList()
-    },
-   getTaskList(){
-       const taskList=model.getTaskList()
-       taskList.map(e=>{
-           e.year='2023' //通过moment获取
-           e.principals=e.principalList.join(',')
+        if (getApp().isLogin()) {
 
-       })
-       this.setData({
-        taskList
-       })
-   },
+            this.getRTaskList()
+        } 
+
+    },
+   
     /**
      * 生命周期函数--监听页面隐藏
      */

@@ -1,47 +1,122 @@
 // pages/userSum/userSum.js
 import model from '../../utils/mock'
 import moment from 'moment';
+
+import {
+    method
+} from "../../utils/api.js"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        taskList:[],
-        show:false
+        page_number: 0,
+        page_size: 20,
+        from: 1,
+        start_time: 0,
+        end_time: 0,
+        task_list: [],
+        total: 0,
+        show: false,
+        isRefresh:false,
+        minDate:moment().subtract(2, 'months').valueOf()
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+       
     },
-    showCalendar(){
+    refresh(){
+        this.reSet()
+        this.getRTaskList()
+    },
+    reSet() {
         this.setData({
-            show:true
+            start_time: 0,
+            end_time: 0,
+            page_number: 0,
+            page_size: 20,
+            task_list: [],
+            total: 0
         })
     },
-    onClose(){
-this.setData({
-    show:false,
-    startDate:'',
-    endDate:''
-})
+    getMore() {
+        const page_number = this.data.page_number
+        if (this.total > this.data.task_list.length) {
+            this.setData({
+                page_number: page_number + 1
+            })
+            this.getRTaskList()
+        }
     },
-    onConfirm(e){
-        const dateList=e.detail
-        let startDate=moment(dateList[0]).format('YYYY-MM-DD')
-        let endDate=moment(dateList[1]).format('YYYY-MM-DD')
-       this.setData({
-           startDate,endDate,
-           show:false
-       })
+    getRTaskList() {
+        const that = this
+        let task_list = this.data.task_list
+        const {
+            page_number,
+            page_size,
+            from,
+            start_time,
+            end_time
+        } = this.data
+        wx.showLoading()
+        const fstart_time=moment(start_time).valueOf()
+        const fend_time=moment(end_time).valueOf()
+        method.cloudApi('getTaskList', {
+            page_number,
+            page_size,
+            from,
+            start_time:fstart_time,
+            end_time:fend_time
+        }).then(res => {
+            console.log(res)
+            wx.hideLoading()
+            const new_array = task_list.concat(res.result.data)
+            console.log(new_array)
+            that.setData({
+                task_list: new_array,
+                total: res.result.total,
+                isRefresh:false
+            })
+        }).catch(err => {
+            console.log(err)
+            wx.hideLoading()
+        })
     },
-    onSearch(e){
-   console.log(e)
+    showCalendar() {
+        this.setData({
+            show: true
+        })
     },
-    
+    onClose() {
+        this.setData({
+            show: false,
+            start_time:0,
+            end_time: 0
+        })
+    },
+    onConfirm(e) {
+        const dateList = e.detail
+        let start_time = moment(dateList[0]).format('YYYY-MM-DD')
+        let end_time = moment(dateList[1]).format('YYYY-MM-DD')
+        this.setData({
+            start_time,
+            end_time,
+            show: false,
+            page_number: 0,
+            page_size: 20,
+            task_list: [],
+            total: 0
+        })
+        this.getRTaskList()
+    },
+    onSearch(e) {
+        console.log(e)
+    },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -53,25 +128,20 @@ this.setData({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        if(typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-          this.getTabBar().setData({
-            selected: "userSum"
-          })
+        this.reSet()
+        if (typeof this.getTabBar === 'function' &&
+            this.getTabBar()) {
+            this.getTabBar().setData({
+                selected: "userSum"
+            })
         }
-        this.getTaskList()
+        if (getApp().isLogin()) {
+
+            this.getRTaskList()
+        } 
+
     },
-    getTaskList(){
-        const taskList=model.getTaskList()
-        taskList.map(e=>{
-            e.year='2023' //通过moment获取
-            e.principals=e.principalList.join(',')
- 
-        })
-        this.setData({
-         taskList
-        })
-    },
+   
     /**
      * 生命周期函数--监听页面隐藏
      */

@@ -1,18 +1,23 @@
 <view class="container">
     <navigation userName="李四" isManage="{{true}}"></navigation>
     <view class="filter_box" bindtap="showCalendar">
-        <input type="text" placeholder="请选择开始日期" disabled  value="{{startDate}}"/>
+        <input type="text" placeholder="请选择开始日期" disabled  value="{{start_time||''}}"/>
        <view>
            -
        </view>
-        <input type="text" placeholder="请选择结束日期" disabled value="{{endDate}}"/>
+        <input type="text" placeholder="请选择结束日期" disabled value="{{end_time||''}}"/>
         <image src="../../images/icon/calendar.png" mode="aspectFill" class="calendar_icon"/>
     </view>
   
    
     <view class="scroll_container">
-        <scroll-view scroll-y class="scroll_box">
-           <mTaskItem wx:for="{{taskList}}" taskItem="{{item}}" taskIndex="{{index+1}}" type="{{1}}"></mTaskItem>
+        <scroll-view scroll-y class="scroll_box" bindscrolltolower="getMore" refresher-enabled bindrefresherrefresh="refresh" refresher-triggered="{{isRefresh}}">
+           <block wx:if="{{task_list.length}}">
+            <mTaskItem wx:for="{{task_list}}" taskItem="{{item}}" taskIndex="{{index+1}}" type="{{1}}"></mTaskItem>
+           </block>
+           <view wx:else>
+                <van-empty description="暂无任务" />
+            </view>
            <view class="tabberHeight"></view>
         </scroll-view>
     </view>
@@ -23,6 +28,6 @@
       
     </view>
     <view  style="  background-color: #fff;height: 160rpx;"></view>
-   
+    <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" type="range" show-confirm="{{ true }}" color="#015CAD" class="calendar" min-date="{{ minDate }}"/>
 </view>
 

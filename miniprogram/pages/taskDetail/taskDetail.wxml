@@ -1,21 +1,22 @@
+<wxs module="utils" src="../../utils/format.wxs"></wxs>
 <view class="container content_box">
     <view class="scroll_container">
     <scroll-view class="scroll_box" scroll-y>
         
   
         <van-cell-group>
-            <van-cell title="工作日期：" value="2023年06月23日" />
-            <van-cell title="项目编号：" value="0256745（2023）" />
-            <van-cell title="项目名称：" value="上海定科工作管理" />
+            <van-cell title="工作日期：" value="{{work_date}}" />
+            <van-cell title="项目编号：" value="{{project_number}}" />
+            <van-cell title="项目名称：" value="{{project_name}}" />
 
-            <van-cell title="联系人：" value="李书文" />
-            <van-cell title="负责人：" value="王琴" />
-            <van-cell title="协同人：" value="张世伟、李秀、王东升" />
+            <van-cell title="联系人：" value="{{contact_person}}" />
+            <van-cell title="负责人：" value="{{project_manager.name}}" />
+            <van-cell title="协同人：" value=" {{utils.joinArray(synergy_list_checked)}}" />
 
-            <van-cell title="到达地点：" value="上海办公大厦A楼12号" />
-            <van-cell title="到达时间：" value="2023年06月23日 15:26" />
-            <van-cell title="车辆：" value="本田(沪A25V51)" />
-            <van-cell title="备注：" value="无" />
+            <van-cell title="到达地点：" value="{{work_location}}" />
+            <van-cell title="到达时间：" value="{{arrive_time}}" />
+            <van-cell title="车辆：" value="{{project_vehicle.carTypeNum}}" />
+            <van-cell title="备注：" value="{{remark||'无'}}" />
 
         </van-cell-group>
 
@@ -24,9 +25,9 @@
     </scroll-view>
 
     </view>
-    <view class="fullwidth" bindtap="doneWork">
-        <view class=" saveBtn btn ">
-            完成任务
+    <view class="fullwidth" bindtap="doneWork" wx:if="{{progress==1}}">
+        <view class=" saveBtn btn " >
+            确认返回
         </view>
     </view>
    

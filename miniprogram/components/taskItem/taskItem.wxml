@@ -1,3 +1,4 @@
+<wxs module="utils" src="../../utils/format.wxs"></wxs>
 <view class="task_item_box" bindtap="toDetail">
 <view class="task_num_top">
    <view class="task_num_top_left">
@@ -7,13 +8,13 @@
        </view>
    </view>
    <view class="task_num_top_right">
-        <view class="{{taskItem.status==0?'gray_color':'green_color'}}" wx:if="{{type==0}}">
-           {{taskItem.status==0?'待处理':'已完成'}}
+        <view class="{{taskItem.progress==1?'gray_color':'green_color'}}" wx:if="{{type==0}}">
+           {{taskItem.progress==1?'待处理':'已完成'}}
        </view>
-       <view class="{{taskItem.status==0?'gray_color':'green_color'}}" wx:if="{{type==1}}">
-           {{taskItem.status==0?'待汇报':'已汇报'}}
+       <view class="{{taskItem.progress==2?'gray_color':'green_color'}}" wx:if="{{type==1}}">
+           {{taskItem.progress==2?'待汇报':'已汇报'}}
        </view>
-       <image src="{{taskItem.status==0?'../../images/icon/arrow_gray.png':'../../images/icon/arrow_green.png'}}" mode="aspectFill" class="arrow"/>
+       <image src="{{taskItem.progress==1?'../../images/icon/arrow_gray.png':'../../images/icon/arrow_green.png'}}" mode="aspectFill" class="arrow"/>
     </view>
 </view>
     <view class="task_num_bottom">
@@ -26,7 +27,7 @@
                     项目编号：
                 </view>
                 <view>
-                    {{taskItem.serialNumber}}（2023）
+                    {{taskItem.project_number}}
                 </view>
             </view>
             <view class="list_item">
@@ -34,7 +35,7 @@
                     项目名称：
                 </view>
                 <view class="task_list_re">
-                    {{taskItem.taskName}}
+                    {{taskItem.project_name}}
                 </view>
             </view>
             <view class="list_item">
@@ -42,7 +43,7 @@
                     负责人：
                 </view>
                 <view class="main_color task_list_re">
-                    {{taskItem.principal}}
+                    {{taskItem.project_manager.name}}
                 </view>
             </view>
             <view class="list_item">
@@ -50,7 +51,7 @@
                     协同人：
                 </view>
                 <view class="main_color task_list_re">
-                    {{taskItem.principals}}
+                    {{utils.joinArray(taskItem.synergy_list_checked)}}
                 </view>
             </view>
         </view>

@@ -3,6 +3,11 @@
     box-sizing: border-box;
     width: 750rpx;
 }
+.input-container{
+    margin-bottom: 24rpx;
+    display: flex;
+    padding: 10rpx 32rpx 0rpx 32rpx;
+  }
 .fullwidth{
     width: 100%;
     padding: 20rpx 32rpx 0rpx 32rpx;
@@ -90,3 +95,70 @@ border-radius: 8rpx 8rpx 8rpx 8rpx;
 opacity: 1;
 padding: 20rpx;
 }
+.pList{
+    display: flex;
+    width: 100%;
+    font-size: 24rpx;
+    flex-wrap: wrap;
+}
+.pitem{
+    background-color: #f4f4f4;
+    padding: 10rpx 20rpx;
+    margin-left: 16rpx;
+    margin-top: 16rpx;
+}
+.checked{
+    background-color: #015CAD;
+    color: #fff;
+}
+.flex_between1{
+/* background-color: red; */
+display: flex;
+box-sizing: border-box;
+justify-content: space-between;
+}
+
+.title_operate{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .title{
+    margin-bottom: 24rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  }
+  .operate{
+    display: flex;
+    height: 64rpx;
+    align-items: center;
+  }
+  .operate_icon{
+    height: 32rpx;
+    width: 32rpx;
+    border-radius: 50%;
+  }
+  .add_icon{
+    /* background-color: blue; */
+  }
+  .delete_icon{
+    margin-left: 32rpx;
+    /* background-color: red; */
+  }
+  .input-box{
+    background-color: #F4F4F4;
+    line-height: 64rpx;
+    height: 64rpx;
+    padding: 0rpx 32rpx;
+    border-radius: 8rpx;
+    font-size: 28rpx;
+  }
+  .left_input{
+    width: 192rpx;
+  }
+  .right_input{
+    flex-grow: 1;
+    margin-left: 32rpx;
+  }

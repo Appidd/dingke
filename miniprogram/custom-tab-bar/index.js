@@ -94,25 +94,20 @@ Component({
      */
     attached() {
         const that = this
-        method.cloudApi('getUserInfo').then(res => {
-            if (res.result.data.length) {
-                const infoObj = res.result.data[0]
-                if (infoObj.isManager) {
+        const timer = setInterval(() => {
+            if (getApp().globalData.appReady) {
+                if(getApp().globalData.isManager){
                     that.setData({
                         selectList: this.data.allList[1]
                     })
-                } else {
+                }else{
                     that.setData({
                         selectList: this.data.allList[0]
                     })
                 }
-            } else {
-                that.setData({
-                    selectList: this.data.allList[0]
-                })
+              clearInterval(timer);
             }
-
-        }).catch(err => {})
+          }, 20);
     },
     /**
      * 组件的方法列表

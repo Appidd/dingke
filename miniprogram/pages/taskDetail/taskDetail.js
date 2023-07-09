@@ -1,4 +1,8 @@
 // pages/taskDetail/taskDetail.js
+import moment from 'moment';
+import {
+    method
+} from "../../utils/api.js"
 Page({
 
     /**
@@ -12,10 +16,58 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
+        console.log(options)
+        this.setData({
+            id:options.id
+        })
+        this.getTaskDetail(options.id)
+    },
+    getTaskDetail(id) {
+        const that = this
+        wx.showLoading()
+        method.cloudApi('getTaskDetail', {
+            id
+        }).then(res => {
+            const taskObj = res.result.data
+            taskObj.work_date = moment(taskObj.arrive_time).format('YYYY-MM-DD')
+            taskObj.arrive_time = moment(taskObj.arrive_time).format('YYYY-MM-DD HH:mm')
+
+            wx.hideLoading()
+
+            that.setData({
+                ...taskObj
+            })
+        }).catch(err => {
+            console.log(err)
+            wx.hideLoading()
+        })
 
     },
-    doneWork(){
-        wx.navigateBack()
+    doneWork() {
+      
+            const that = this
+            wx.showLoading({
+                title:'确认中'
+            })
+            method.cloudApi('updateTask', {
+                id:that.data.id
+            }).then(res => {
+                console.log(res)
+                
+                wx.hideLoading()
+                wx.showToast({
+                  title: '已确认',
+                })
+               setTimeout(e=>{
+                wx.navigateBack()
+               },1000)
+            }).catch(err => {
+                console.log(err)
+                wx.hideLoading()
+            })
+    
+        
+       
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

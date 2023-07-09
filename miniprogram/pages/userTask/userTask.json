@@ -2,7 +2,8 @@
     "usingComponents": {
       "navigation":"../../components/navigation/navigation",
       "weekCalendar":"../../components/weekCalendar/weekCalendar",
-      "taskItem":"../../components/taskItem/taskItem"
+      "taskItem":"../../components/taskItem/taskItem",
+      "van-empty": "@vant/weapp/empty/index"
     },
     "navigationStyle": "custom"
 }

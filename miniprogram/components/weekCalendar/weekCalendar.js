@@ -25,14 +25,12 @@ Component({
     methods: {
       chooseDate(e){
         const item=e.currentTarget.dataset.item
-        console.log(item)
         const newDateList=this.data.newDateList
         newDateList.map(e=>{
           e.checked=false
         })
         newDateList.map(e=>{
           if(e.day==item.day){
-            console.log(e,item)
             e.checked=true
             return
           }

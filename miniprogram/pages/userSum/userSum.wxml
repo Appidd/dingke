@@ -1,23 +1,27 @@
 <view class="container">
     <navigation userName="李四" isManage="{{true}}"></navigation>
     <view class="filter_box" bindtap="showCalendar">
-        <input type="text" placeholder="请选择开始日期" disabled  value="{{startDate}}"/>
-       <view>
-           -
-       </view>
-        <input type="text" placeholder="请选择结束日期" disabled value="{{endDate}}"/>
-        <image src="../../images/icon/calendar.png" mode="aspectFill" class="calendar_icon"/>
+        <input type="text" placeholder="请选择开始日期" disabled value="{{start_time||''}}" />
+        <view>
+            -
+        </view>
+        <input type="text" placeholder="请选择结束日期" disabled value="{{end_time||''}}" />
+        <image src="../../images/icon/calendar.png" mode="aspectFill" class="calendar_icon" />
     </view>
     <view style="width: 100%;">
-        <van-search  shape="round" placeholder="请输入需要查询的信息"  bind:search="onSearch"></van-search>
+        <van-search shape="round" placeholder="请输入需要查询的信息" bind:search="onSearch"></van-search>
     </view>
-   
+
     <view class="scroll_container">
-        <scroll-view scroll-y class="scroll_box">
-           <taskItem wx:for="{{taskList}}" taskItem="{{item}}" taskIndex="{{index+1}}" type="{{1}}"></taskItem>
+        <scroll-view scroll-y class="scroll_box" bindscrolltolower="getMore" refresher-enabled bindrefresherrefresh="refresh" refresher-triggered="{{isRefresh}}">
+            <block wx:if="{{task_list.length}}">
+                <taskItem wx:for="{{ task_list}}" taskItem="{{item}}" taskIndex="{{index+1}}" type="{{1}}"></taskItem>
+            </block>
+            <view wx:else>
+                <van-empty description="暂无任务" />
+            </view>
             <view class="tabberHeight"></view>
         </scroll-view>
     </view>
-    <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm"  type="range" show-confirm="{{ true }}" color="#015CAD"  class="calendar"/>
+    <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" type="range" show-confirm="{{ true }}" color="#015CAD" class="calendar" min-date="{{ minDate }}"/>
 </view>
-
