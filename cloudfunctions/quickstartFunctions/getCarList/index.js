@@ -11,8 +11,8 @@ exports.main = async (event, context) => {
     const keywords=event.keywords
     if(keywords){
      //模糊查询
-     const result = await db.collection('userList').where({
-        userName: db.RegExp({
+     const result = await db.collection('carList').where({
+        carTypeNum: db.RegExp({
             regexp: keywords,
             options: 'i' // i表示不区分大小写
       
@@ -24,7 +24,7 @@ exports.main = async (event, context) => {
          message:'ok'
      }
     }else{
-        const result = await db.collection('userList').get()
+        const result = await db.collection('carList').get()
         return {
             data:result.data,
             code:1,

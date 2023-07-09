@@ -50,10 +50,10 @@ Page({
                 title:'确认中'
             })
             method.cloudApi('updateTask', {
-                id:that.data.id
+                id:that.data.id,
+                progress:1
             }).then(res => {
                 console.log(res)
-                
                 wx.hideLoading()
                 wx.showToast({
                   title: '已确认',

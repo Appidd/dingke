@@ -4,14 +4,7 @@
     </view>
     <view class="scroll_box">
         <scroll-view class="scroll_view" scroll-y>
-            <van-cell title="本田(沪A25V51)" is-link bindtap="toCarInfo" />
-            <van-cell title="大众SUV(沪A68O8V)" is-link bindtap="toCarInfo" />
-            <van-cell title="林肯(沪A6668V)" is-link bindtap="toCarInfo" />
-            <van-cell title="本田(沪A25V51)" is-link bindtap="toCarInfo" />
-            <van-cell title="大众SUV(沪A68O8V)" is-link bindtap="toCarInfo" />
-            <van-cell title="林肯(沪A6668V)" is-link bindtap="toCarInfo" />
-
-
+            <van-cell title="{{item.carTypeNum||'未添加'}}" is-link bindtap="toCarInfo" wx:for="{{car_list}}" data-id="{{item._id}}"/>
         </scroll-view>
     </view>
 

@@ -1,20 +1,17 @@
 <view class="container">
-
     <view class="scroll_container">
         <scroll-view scroll-y class="scroll_box">
             <view class="userInfo page_container">
-                <image src="../../images/icon/avatar.png" mode="aspectFill" class="avatar" />
+                <image src="{{avatarUrl||'../../images/icon/avatar.png'}}" mode="aspectFill" class="avatar" />
                 <view class="name_phone">
                     <view class="name">
-                        李四
+                        {{userName||'微信用户'}}
                     </view>
                     <view class="phone">
-                        17323011656
+                        {{contactsPhone||''}}
                     </view>
                 </view>
-
             </view>
-
             <view class="page_container">
                 <view class="flex_begin">
                     <image src="../../images/icon/idcard.png" mode="aspectFill" class="idcard" />
@@ -22,46 +19,28 @@
                         人资信息
                     </view>
                 </view>
-               
-                    <van-cell title="身份证号：" value="5101831996040165039" border="{{ false }}" />
-                    <van-cell title="家庭住址：" value="上海市黄浦区尚文路133号房间" border="{{ false }}" />
-                    <van-cell title="紧急联系人：" value="杨过益（17323014526）" border="{{ false }}" />
-                    <van-cell title="身份证复印件："  border="{{ false }}" />
+                <van-cell title="身份证号：" value="{{idCard||''}}" border="{{ false }}" />
+                <van-cell title="家庭住址：" value="{{address||''}}" border="{{ false }}" />
+                <van-cell title="紧急联系人：" value="{{contactsName}}({{contactsPhone}})" border="{{ false }}" />
+                <van-cell title="身份证复印件：" border="{{ false }}" />
                 <view class="idcard_box">
-                            <view class="idcard_img">
-                                身份证国徽
-                            </view>
-                            <view class="idcard_img">
-                                身份证人像
-                            </view>
-                        </view>
-                        <van-cell title="特种证件："  border="{{ false }}" />
-                        <view class="idcard_box">
-                       
-                            <view class="idcard_img">
-                                特种1
-                            </view>
-                            <view class="idcard_img">
-                                特种2
-                            </view>
-                        </view>
-
-
-
-
+                    <image src="{{item}}" mode="aspectFill" wx:for="{{idCardImg}}" class="idcard_img" />
+                </view>
+                <van-cell title="特种证件：" border="{{ false }}" />
+                <view class="idcard_box">
+                    <image src="{{item.url}}" mode="aspectFill" wx:for="{{specialCertifiList}}" class="idcard_img" />
+                </view>
             </view>
-
-
             <view class="tabberHeight"></view>
         </scroll-view>
     </view>
-    <view class="fullwidth1">
+    <!-- <view class="fullwidth1">
         <view class=" saveBtn " style="background-color: #015CAD;">
             设为管理员
         </view>
-    </view>
+    </view> -->
     <view class="fullwidth">
-        <view class=" saveBtn ">
+        <view class="saveBtn" bindtap="deletePerson">
             删除
         </view>
     </view>

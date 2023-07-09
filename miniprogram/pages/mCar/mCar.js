@@ -1,22 +1,68 @@
-// pages/mCar/mCar.js
+// pages/mPeople/mPeople.js
+import moment from 'moment';
+import {
+    method
+} from "../../utils/api.js"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        car_list: [],
+        isRefresh: false,
+        keywords:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        
     },
-    toCarInfo(){
+    onSearch(e) {
+        console.log(e)
+        const keywords = e.detail
+        this.setData({
+            keywords
+        })
+        this.getCarList()
+    },
+    refresh() {
+        this.reSet()
+        this.getCarList()
+    },
+    reSet() {
+        this.setData({
+            car_list: [],
+            keywords:''
+        })
+    },
+
+    getCarList() {
+        const that = this
+        const keywords = this.data.keywords
+        wx.showLoading()
+        method.cloudApi('getCarList', {
+            keywords
+        }).then(res => {
+            wx.hideLoading()
+            console.log(res)
+
+            that.setData({
+                isRefresh: false,
+                car_list: res.result.data
+            })
+
+        }).catch(err => {
+            wx.hideLoading()
+        })
+    },
+    toCarInfo(e) {
+        const id=e.currentTarget.dataset.id
+      
         wx.navigateTo({
-          url: '../mCarInfo/mCarInfo',
+            url: '../mCarInfo/mCarInfo?id='+id,
         })
     },
     /**
@@ -30,7 +76,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        this.getCarList()
     },
 
     /**

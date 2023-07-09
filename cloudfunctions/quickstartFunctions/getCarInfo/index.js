@@ -10,14 +10,23 @@ const db = cloud.database();
 exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     const openid = wxContext.OPENID
-
-        const result = await db.collection('carList').where({
-            openid: openid
-        }).get()
-        return {
-            data:result.data,
-            code:1,
-            message:'ok'
-        }
+ if(event.id){
+    const result = await db.collection('carList').doc(event.id).get()
+    return {
+        data:result.data,
+        code:1,
+        message:'ok'
+    }
+ }else{
+    const result = await db.collection('carList').where({
+        openid: openid
+    }).get()
+    return {
+        data:result.data,
+        code:1,
+        message:'ok'
+    }
+ }
+       
    
 };

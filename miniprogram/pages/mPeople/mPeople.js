@@ -1,22 +1,68 @@
 // pages/mPeople/mPeople.js
+import moment from 'moment';
+import {
+    method
+} from "../../utils/api.js"
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        user_list: [],
+        isRefresh: false,
+        keywords:''
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        
     },
-    toPeopleInfo(){
+    onSearch(e) {
+        console.log(e)
+        const keywords = e.detail
+        this.setData({
+            keywords
+        })
+        this.getUserList()
+    },
+    refresh() {
+        this.reSet()
+        this.getUserList()
+    },
+    reSet() {
+        this.setData({
+            user_list: [],
+            keywords:''
+        })
+    },
+
+    getUserList() {
+        const that = this
+        const keywords = this.data.keywords
+        wx.showLoading()
+        method.cloudApi('getUserList', {
+            keywords
+        }).then(res => {
+            wx.hideLoading()
+            console.log(res)
+
+            that.setData({
+                isRefresh: false,
+                user_list: res.result.data
+            })
+
+        }).catch(err => {
+            wx.hideLoading()
+        })
+    },
+    toPeopleInfo(e) {
+        const id=e.currentTarget.dataset.id
+      
         wx.navigateTo({
-          url: '../mPeopleInfo/mPeopleInfo',
+            url: '../mPeopleInfo/mPeopleInfo?id='+id,
         })
     },
     /**
@@ -30,7 +76,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-
+        this.getUserList()
     },
 
     /**

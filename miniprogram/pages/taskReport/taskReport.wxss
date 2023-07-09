@@ -140,12 +140,8 @@ justify-content: space-between;
     width: 32rpx;
     border-radius: 50%;
   }
-  .add_icon{
-    /* background-color: blue; */
-  }
   .delete_icon{
     margin-left: 32rpx;
-    /* background-color: red; */
   }
   .input-box{
     background-color: #F4F4F4;

@@ -12,6 +12,9 @@ const getAddTaskList = require('./getAddTaskList/index')
 const getTaskDetail = require('./getTaskDetail/index')
 const updateTask = require('./updateTask/index')
 const addTaskUpdate = require('./addTaskUpdate/index')
+const deletePerson = require('./deletePerson/index')
+const getCarList = require('./getCarList/index')
+const deleteCar = require('./deleteCar/index')
 // 云函数入口函数
 exports.main = async (event, context) => {
     switch (event.type) {
@@ -43,6 +46,13 @@ exports.main = async (event, context) => {
             return await updateTask.main(event, context);
         case 'addTaskUpdate':
             return await addTaskUpdate.main(event, context);
+        case 'deletePerson':
+            return await deletePerson.main(event, context);
+        case 'getCarList':
+            return await getCarList.main(event, context);
+
+        case 'deleteCar':
+            return await deleteCar.main(event, context);
 
     }
 };

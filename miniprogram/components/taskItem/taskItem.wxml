@@ -14,7 +14,7 @@
        <view class="{{taskItem.progress==2?'gray_color':'green_color'}}" wx:if="{{type==1}}">
            {{taskItem.progress==2?'待汇报':'已汇报'}}
        </view>
-       <image src="{{taskItem.progress==1?'../../images/icon/arrow_gray.png':'../../images/icon/arrow_green.png'}}" mode="aspectFill" class="arrow"/>
+       <image src="{{taskItem.progress==2?'../../images/icon/arrow_gray.png':'../../images/icon/arrow_green.png'}}" mode="aspectFill" class="arrow"/>
     </view>
 </view>
     <view class="task_num_bottom">

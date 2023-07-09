@@ -11,6 +11,14 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext();
     const openid = wxContext.OPENID
 
+      if(event.id){
+        const result = await db.collection('userList').doc(event.id).get()
+        return {
+            data:result.data,
+            code:1,
+            message:'ok'
+        }
+      }else{
         const result = await db.collection('userList').where({
             openid: openid
         }).get()
@@ -19,5 +27,6 @@ exports.main = async (event, context) => {
             code:1,
             message:'ok'
         }
+      }
    
 };

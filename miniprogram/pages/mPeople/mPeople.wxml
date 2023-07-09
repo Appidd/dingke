@@ -1,21 +1,19 @@
 <view class="container">
     <view style="width: 100%;">
-        <van-search shape="round" placeholder="请输入查询姓名" bind:search="onSearch"></van-search>
+        <van-search shape="round" placeholder="请输入查询姓名" bind:search="onSearch" value="{{keywords}}"></van-search>
     </view>
     <view class="scroll_box">
-        <scroll-view class="scroll_view" scroll-y>
-            <van-cell title="王琴（管理员）" is-link bindtap="toPeopleInfo" />
-            <van-cell title="王马小（管理员）" is-link bindtap="toPeopleInfo" />
-            <van-cell title="杨潇" is-link bindtap="toPeopleInfo" />
-            <van-cell title="孙德胜" is-link bindtap="toPeopleInfo" />
-            <van-cell title="刘大伟" is-link bindtap="toPeopleInfo" />
-            <van-cell title="孙德胜" is-link bindtap="toPeopleInfo" />
-            <van-cell title="刘大伟" is-link bindtap="toPeopleInfo" />
-
-
+        <scroll-view class="scroll_view" scroll-y bindrefresherrefresh="refresh" refresher-triggered="{{isRefresh}}" refresher-enabled>
+            <van-cell is-link bindtap="toPeopleInfo" wx:for="{{user_list}}" data-id="{{item._id}}">
+                <view slot="title" style="display: flex;align-items: center;">
+                    <view class="van-cell-text">{{item.userName||'匿名用户'}}{{item.isManager?'(管理员)':''}}</view>
+                   
+                    <image src="{{item.sex==1?'../../images/icon/boy.png':'../../images/icon/girl.png'}}" mode="" style="width: 36rpx;height: 36rpx;margin-left: 32rpx;"/>
+                    
+                </view>
+            </van-cell>
         </scroll-view>
     </view>
-
     <view class="fullwidth">
         <view class=" saveBtn ">
             导出人员信息

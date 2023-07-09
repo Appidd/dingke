@@ -19,9 +19,44 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        const id=options.id
+       this.setData({
+           id
+       })
+       this. getCarInfo(id)
     },
-
+    getCarInfo(id) {
+        const that = this
+        wx.showLoading()
+        method.cloudApi('getCarInfo',{id}).then(res => {
+            wx.hideLoading()
+            const infoObj=res.result.data
+            that.setData({
+                ...infoObj
+            })
+            console.log(res)
+        }).catch(err => {
+            wx.hideLoading()
+        })
+    },
+    deleteCar(){
+        const that = this
+        wx.showLoading({
+            title:'删除中'
+        })
+        const id=this.data.id
+        method.cloudApi('deleteCar',{id}).then(res => {
+            wx.hideLoading()
+            wx.showToast({
+              title: '删除成功',
+            })
+           setTimeout(e=>{
+               wx.navigateBack()
+           },1000)
+        }).catch(err => {
+            wx.hideLoading()
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

@@ -11,7 +11,7 @@
                 车型、车牌号：
             </view>
             <view style="color:#979797">
-                本田(沪A25V51)
+                {{carTypeNum||'未完善'}}
             </view>
         </view>
         <view class="left_item">
@@ -19,7 +19,7 @@
                 所属人
             </view>
             <view style="color:#979797">
-                王刚
+                {{belongs}}
             </view>
         </view>
     </view>
@@ -29,25 +29,24 @@
                 保险有效日期：
             </view>
             <view style="color:#979797">
-                2018.06.21-2023.06.21
+                {{startDate}}-{{endDate}}
             </view>
         </view>
-
     </view>
     <view class="only_title">
         行驶证
     </view>
     <view class="image_box">
-        <image src="" mode="" class="img_item" wx:for="{{3}}" mode="aspectFill" />
+        <image src="{{item.url}}" mode="aspectFill" class="img_item" wx:for="{{drivingLicenceList}}" mode="aspectFill" />
     </view>
     <view class="only_title">
         保险单
     </view>
     <view class="image_box">
-        <image src="" mode="" class="img_item" wx:for="{{2}}" mode="aspectFill" />
+        <image src="{{item.url}}" mode="aspectFill" class="img_item" wx:for="{{insuranceList}}" mode="aspectFill" />
     </view>
     <view class="fullwidth">
-        <view class=" saveBtn ">
+        <view class=" saveBtn " bindtap="deleteCar">
             删除
         </view>
     </view>
