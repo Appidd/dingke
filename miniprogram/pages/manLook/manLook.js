@@ -15,19 +15,39 @@ Page({
 
     },
     tomPeople(){
-        wx.navigateTo({
-          url: '../mPeople/mPeople',
-        })
+        if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '../mPeople/mPeople',
+              })
+        }else{
+            wx.navigateTo({
+              url: '../login/login',
+            })
+        }
     },
     tomCar(){
-        wx.navigateTo({
-          url: '../mCar/mCar',
-        })
+        if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '../mCar/mCar',
+              })
+        }else{
+            wx.navigateTo({
+              url: '../login/login',
+            })
+        }
+       
     },
     toStatistic(){
-        wx.navigateTo({
-          url: '../statistic/statistic',
-        })
+        if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '../statistic/statistic',
+              })
+        }else{
+            wx.navigateTo({
+              url: '../login/login',
+            })
+        }
+       
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

@@ -94,6 +94,7 @@ Component({
      */
     attached() {
         const that = this
+       
         const timer = setInterval(() => {
             if (getApp().globalData.appReady) {
                 if(getApp().globalData.isManager){
@@ -108,6 +109,7 @@ Component({
               clearInterval(timer);
             }
           }, 20);
+       
     },
     /**
      * 组件的方法列表

@@ -2,16 +2,20 @@
 import model from '../../utils/mock'
 import moment from 'moment';
 import * as echarts from '../../components/ec-canvas/echarts';
+import {
+    method
+} from "../../utils/api.js"
 
-  
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        taskList:[],
-        show:false
+        task_list: [],
+        show: false,
+        minDate:moment().subtract(2, 'months').valueOf()
     },
 
     /**
@@ -33,89 +37,94 @@ Page({
         });
     },
     setavOption(chart) {
-        
-       var option = {
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'shadow'
-            }
-          },
+
+        var option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
             xAxis: {
-              type: 'category',
-              data: ['07.01', '07.02', '07.03', '07.04', '07.05', '07.06', '07.08']
+                type: 'category',
+                data: ['07.01', '07.02', '07.03', '07.04', '07.05', '07.06', '07.08']
             },
             yAxis: {
-              type: 'value'
+                type: 'value'
             },
-            series: [
-              {
+            series: [{
                 data: [120, 200, 150, 80, 70, 110, 130],
                 type: 'bar',
                 showBackground: true,
                 backgroundStyle: {
-                  color: 'rgba(180, 180, 180, 0.2)'
+                    color: 'rgba(180, 180, 180, 0.2)'
                 }
-              }
-            ]
-          };
+            }]
+        };
 
         chart.setOption(option);
     },
-    showCalendar(){
+    showCalendar() {
         this.setData({
-            show:true
+            show: true
         })
     },
-    onClose(){
-this.setData({
-    show:false,
-    startDate:'',
-    endDate:''
-})
+    onClose() {
+        this.setData({
+            show: false,
+            startDate: '',
+            endDate: ''
+        })
     },
-    onConfirm(e){
-        const dateList=e.detail
-        let startDate=moment(dateList[0]).format('YYYY-MM-DD')
-        let endDate=moment(dateList[1]).format('YYYY-MM-DD')
-       this.setData({
-           startDate,endDate,
-           show:false
-       })
+    onConfirm(e) {
+        const dateList = e.detail
+        let startDate = moment(dateList[0]).format('YYYY-MM-DD')
+        let endDate = moment(dateList[1]).format('YYYY-MM-DD')
+        this.setData({
+            startDate,
+            endDate,
+            show: false
+        })
+        this.getTaskList()
     },
-    onSearch(e){
-   console.log(e)
+    onSearch(e) {
+        console.log(e)
     },
-    
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady() {
-this.initavHeightChart()
+        this.initavHeightChart()
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        if(typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-          this.getTabBar().setData({
-            selected: "userSum"
-          })
+        if (typeof this.getTabBar === 'function' &&
+            this.getTabBar()) {
+            this.getTabBar().setData({
+                selected: "userSum"
+            })
         }
         this.getTaskList()
     },
-    getTaskList(){
-        const taskList=model.getTaskList()
-        taskList.map(e=>{
-            e.year='2023' //通过moment获取
-            e.principals=e.principalList.join(',')
- 
+    getTaskList() {
+        const that=this
+        method.dataApi('getStatistics',{
+            startDate:moment(that.data.startDate||0).valueOf(),
+            endDate:moment(that.data.endDate||0).valueOf()
+        }).then(res=>{
+            const task_list=res.result.data.data
+            this.setData({
+                task_list
+            })
+            console.log(res)
+        }).catch(err=>{
+            console.log(err)
         })
-        this.setData({
-         taskList
-        })
+        
     },
     /**
      * 生命周期函数--监听页面隐藏

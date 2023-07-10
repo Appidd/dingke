@@ -128,6 +128,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
+        console.log(11)
         this.reSet()
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
@@ -136,7 +137,7 @@ Page({
             })
         }
         if (getApp().isLogin()) {
-
+            
             this.getRTaskList()
         } 
 

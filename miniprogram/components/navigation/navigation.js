@@ -20,6 +20,7 @@ Component({
     },
     lifetimes: {
         attached() {
+            console.log(222)
             const that = this
             let menuButtonInfo = wx.getMenuButtonBoundingClientRect()
             const {
@@ -48,19 +49,20 @@ Component({
                     })
                 },
             })
-            method.cloudApi('getUserInfo').then(res=>{
-                console.log(res)
-                if(res.result.data.length){
-                 let infoObj=res.result.data[0]
-                 that.setData({
-                    userName:infoObj.userName,
-                    isManager:infoObj.isManager?true:false
-                 })
-                }
-                
-            }).catch(err=>{
-            })
-
+           
+                method.cloudApi('getUserInfo').then(res=>{
+                    console.log(res)
+                    if(res.result.data.length){
+                     let infoObj=res.result.data[0]
+                     that.setData({
+                        userName:infoObj.userName,
+                        isManager:infoObj.isManager?true:false
+                     })
+                    }
+                    
+                }).catch(err=>{
+                })
+            
         }
         
 

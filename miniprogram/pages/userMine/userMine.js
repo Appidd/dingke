@@ -25,14 +25,28 @@ Page({
         cactiveName: '',
     },
     toEdit() {
-        wx.navigateTo({
-            url: '../userEdit/userEdit',
-        })
+        if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '../userEdit/userEdit',
+            })
+        }else{
+            wx.navigateTo({
+              url: '../login/login',
+            })
+        }
+       
     },
     toCarInfo() {
-        wx.navigateTo({
-            url: '../carInfo/carInfo',
-        })
+        if(getApp().isLogin()){
+            wx.navigateTo({
+                url: '../carInfo/carInfo',
+            })
+        }else{
+            wx.navigateTo({
+              url: '../login/login',
+            })
+        }
+        
     },
     ponChange(event) {
         this.setData({
@@ -96,9 +110,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow() {
-        
-        this.getUserInfo()
-        this.getCarInfo()
+        if(getApp().isLogin()){
+            this.getUserInfo()
+            this.getCarInfo()
+        }
+       
         if (typeof this.getTabBar === 'function' &&
             this.getTabBar()) {
             this.getTabBar().setData({

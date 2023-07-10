@@ -13,13 +13,15 @@ App({
         traceUser: true,
       });
     }
-    method.cloudApi('userLogin').then(res=>{
-        this.globalData.isManager=res.result.data[0].isManager?true:false
-        this.globalData.appReady=true
-    }).catch(err=>{
-        this.globalData.appReady=true
-        this.globalData.isManager=false
-    })
+    
+        method.cloudApi('userLogin').then(res=>{
+            this.globalData.isManager=res.result.data[0].isManager?true:false
+            this.globalData.appReady=true
+        }).catch(err=>{
+            this.globalData.appReady=true
+            this.globalData.isManager=false
+        })
+    
   
   },
   globalData: {

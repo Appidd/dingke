@@ -17,7 +17,7 @@
                <view style="color: #015CAD;font-size: 28rpx;margin-left: 32rpx;">
                    任务数量：
                </view>
-               <text style="color: #015CAD;font-weight: bold;font-size: 64rpx;">365</text>
+               <text style="color: #015CAD;font-weight: bold;font-size: 64rpx;">{{task_list.length}}</text>
            </view>
            <view class="scontainer">
   <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
@@ -31,6 +31,6 @@
         导出任务统计信息
     </view>
 </view>
-    <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm"  type="range" show-confirm="{{ true }}" color="#015CAD"  class="calendar"/>
+    <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm"  type="range" show-confirm="{{ true }}" color="#015CAD"  class="calendar" min-date="{{ minDate }}"/>
 </view>
 
